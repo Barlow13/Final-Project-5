@@ -1,0 +1,7 @@
+0: bicycle
+1: car
+2: motorcycle
+3: bus
+4: truck
+5: traffic light
+6: stop sign
