@@ -45,6 +45,47 @@ void ssd1306_show(void);
  */
 void ssd1306_draw_string(uint8_t x, uint8_t y, const char *str, uint8_t size);
 
+/**
+ * @brief Draw a single pixel on the display
+ * 
+ * @param x X position (0-127)
+ * @param y Y position (0-31)
+ * @param color 1 for pixel on, 0 for pixel off
+ */
+void ssd1306_draw_pixel(uint8_t x, uint8_t y, uint8_t color);
+
+/**
+ * @brief Draw a horizontal line
+ * 
+ * @param x Start X position
+ * @param y Y position
+ * @param width Line width in pixels
+ * @param color 1 for pixel on, 0 for pixel off
+ */
+void ssd1306_draw_hline(uint8_t x, uint8_t y, uint8_t width, uint8_t color);
+
+/**
+ * @brief Draw a rectangle outline
+ * 
+ * @param x X position of top-left corner
+ * @param y Y position of top-left corner
+ * @param width Width in pixels
+ * @param height Height in pixels
+ * @param color 1 for pixel on, 0 for pixel off
+ */
+void ssd1306_draw_rect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t color);
+
+/**
+ * @brief Draw a filled rectangle
+ * 
+ * @param x X position of top-left corner
+ * @param y Y position of top-left corner
+ * @param width Width in pixels
+ * @param height Height in pixels
+ * @param color 1 for pixel on, 0 for pixel off
+ */
+void ssd1306_fill_rect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t color);
+
 #ifdef __cplusplus
 }
 #endif

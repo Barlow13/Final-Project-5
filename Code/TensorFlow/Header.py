@@ -8,3 +8,12 @@ with open('export/model_data.h', 'w') as f:
             f.write('\n ')
         f.write(f' 0x{b:02x},')
     f.write('\n};\nconst int model_data_len = sizeof(model_data);\n')
+
+
+import numpy as np
+
+# Load the .npy file
+data = np.load('export/best_thresholds.npy')
+
+# Print the array
+print(data)

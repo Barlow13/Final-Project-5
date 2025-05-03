@@ -1,0 +1,5 @@
+===== Model Size Analysis =====
+Model file: ../TensorFlow/export/RoadLiteMobileNetV2.tflite
+Model size: 668.60 KB (0.65 MB)
+Percentage of typical RP2040 flash (2MB): 0.33%
+Percentage of typical RP2040 RAM (264KB): 2.53%

@@ -1,0 +1,4 @@
+===== Inference Speed Test =====
+Average inference time: 0.16 ms (6127.04 FPS)
+Standard deviation: 0.04 ms
+Min/Max time: 0.10/0.23 ms

@@ -28,17 +28,54 @@ bool pca9546_select(i2c_inst_t *i2c, uint8_t port) {
 }
 
 bool pca9546_select_channel(i2c_inst_t *i2c, uint8_t addr, uint8_t channel_mask) {
-    // Check that only one channel bit is set (0, 1, 2, or 3)
+    // Check that valid channel bit is set (0, 1, 2, or 3)
     if (channel_mask != PCA9546_CHANNEL_0 && 
         channel_mask != PCA9546_CHANNEL_1 && 
         channel_mask != PCA9546_CHANNEL_2 && 
         channel_mask != PCA9546_CHANNEL_3) {
-        // For select_channel function, only allow a single channel selection
         printf("ERROR: Invalid channel selection - must select a single channel\n");
         return false;
     }
     
-    return pca9546_select_channels(i2c, addr, channel_mask);
+    // First disable all channels
+    uint8_t disable_buf[1] = { 0 };
+    i2c_write_blocking(i2c, addr, disable_buf, 1, false);
+    sleep_ms(10);  // Added delay
+    
+    // Now enable the requested channel
+    uint8_t buf[1] = { channel_mask };
+    int ret = i2c_write_blocking(i2c, addr, buf, 1, false);
+    sleep_ms(10);  // Added delay
+    
+    if (ret < 0) {
+        printf("ERROR: Failed to select MUX channel(s) with code %d\n", ret);
+        return false;
+    }
+    
+    // Verify the channel was set correctly
+    uint8_t current_value;
+    int read_ret = i2c_read_blocking(i2c, addr, &current_value, 1, false);
+    
+    if (read_ret < 0) {
+        printf("ERROR: Failed to verify MUX channel selection\n");
+        return false;
+    }
+    
+    if (current_value != channel_mask) {
+        printf("WARNING: MUX channel setting doesn't match requested value!\n");
+        printf("  Requested: 0x%02X, Read back: 0x%02X\n", channel_mask, current_value);
+        
+        // Try one more time with longer delay
+        i2c_write_blocking(i2c, addr, buf, 1, false);
+        sleep_ms(50);  // Longer delay
+        i2c_read_blocking(i2c, addr, &current_value, 1, false);
+        
+        if (current_value != channel_mask) {
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 bool pca9546_select_channels(i2c_inst_t *i2c, uint8_t addr, uint8_t channel_mask) {

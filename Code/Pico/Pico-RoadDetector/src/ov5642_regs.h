@@ -1,6 +1,6 @@
 #ifndef OV5642_REGS_H
 #define OV5642_REGS_H
-#include "ArduCAM.h"
+#include "hardware_config.h"
 //#include <avr/pgmspace.h>
 
 #define OV5642_CHIPID_HIGH 0x300a
@@ -441,32 +441,35 @@ const struct sensor_reg OV5642_640x480_RAW[]  =
 {0xffff,0xff},	
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const struct sensor_reg ov5642_64x64[] = {
+    {0x3800, 0x0},    // HREF control setting
+    {0x3801, 0x00},   // HREF start point high - reset to 0
+    {0x3802, 0x0},    // VSTRT control setting
+    {0x3803, 0x0},    // VSTRT start point high - reset to 0
+    {0x3804, 0x0A},   // Horizontal end point high (2592)
+    {0x3805, 0x20},   // Horizontal end point low
+    {0x3806, 0x07},   // Vertical end point high (1944)
+    {0x3807, 0x98},   // Vertical end point low
+    {0x3808, 0x0},    // DVP output horizontal width high (64 = 0x0040)
+    {0x3809, 0x40},   // DVP output horizontal width low - changed to 0x40 (64)
+    {0x380a, 0x0},    // DVP output vertical height high (64 = 0x0040)
+    {0x380b, 0x40},   // DVP output vertical height low - changed to 0x40 (64)
+    {0x380c, 0xC},    // Total horizontal size high
+    {0x380d, 0x80},   // Total horizontal size low
+    {0x380e, 0x7},    // Total vertical size high
+    {0x380f, 0xd0},   // Total vertical size low
+    {0x5001, 0x7f},   // ISP control setting
+    {0x5680, 0x0},    // AVG X START high
+    {0x5681, 0x0},    // AVG X START low
+    {0x5682, 0xA},    // AVG X END high
+    {0x5683, 0x20},   // AVG X END low
+    {0x5684, 0x0},    // AVG Y START high
+    {0x5685, 0x0},    // AVG Y START low
+    {0x5686, 0x7},    // AVG Y END high
+    {0x5687, 0x98},   // AVG Y END low
+    {0x3821, 0x07},   // Horizontal binning enable (added for better downscaling)
+    {0xffff, 0xff},   // End marker
+};
 
 const struct sensor_reg ov5642_320x240[]  =
 {

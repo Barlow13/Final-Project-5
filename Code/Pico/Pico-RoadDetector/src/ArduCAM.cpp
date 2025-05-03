@@ -1,4 +1,4 @@
-#include "ArduCAM.h"
+#include "hardware_config.h"
 #include "hardware/i2c.h"
 #include "hardware/spi.h"
 #include "hardware/irq.h"
@@ -10,7 +10,7 @@ ArduCAM::ArduCAM()
   sensor_model = OV7670;
   sensor_addr = 0x42;
 }
-ArduCAM::ArduCAM(uint8_t model ,int CS)
+ArduCAM::ArduCAM(byte model ,int CS)
 {
 	B_CS = CS;
 	*P_CS=CS;
@@ -35,7 +35,7 @@ void ArduCAM::InitCAM()
  
   switch (sensor_model)
   {
-    case OV5642:
+		case OV5642:
 		{
 					wrSensorReg16_8(0x3008, 0x80);
 					if (m_fmt == RAW)
@@ -61,7 +61,7 @@ void ArduCAM::InitCAM()
 						}
 						else
 						{
-							uint8_t reg_val;
+							byte reg_val;
 							wrSensorReg16_8(0x4740, 0x21);
 							wrSensorReg16_8(0x501e, 0x2a);
 							wrSensorReg16_8(0x5002, 0xf8);
@@ -254,7 +254,7 @@ int ArduCAM::wrSensorRegs16_8(const struct sensor_reg reglist[])
 }
 
 // Read/write 8 bit value to/from 16 bit register address
-uint8_t ArduCAM::wrSensorReg16_8(int regID, int regDat)
+byte ArduCAM::wrSensorReg16_8(int regID, int regDat)
 {
     uint8_t buf[3]={0};
     buf[0]=(regID >> 8)&0xff;
@@ -266,7 +266,7 @@ uint8_t ArduCAM::wrSensorReg16_8(int regID, int regDat)
 }
 
 // Read/write 8 bit value to/from 8 bit register address	
-uint8_t ArduCAM::wrSensorReg8_8(int regID, int regDat)
+byte ArduCAM::wrSensorReg8_8(int regID, int regDat)
 {
 uint8_t buf[2];
     buf[0] = regID;
@@ -561,7 +561,7 @@ void ArduCAM::OV2640_set_Light_Mode(uint8_t Light_Mode)
 // #endif
 	}
 
-uint8_t ArduCAM::rdSensorReg8_8(uint8_t regID, uint8_t* regDat)
+byte ArduCAM::rdSensorReg8_8(uint8_t regID, uint8_t* regDat)
 {	
   i2c_write_blocking(I2C_PORT, sensor_addr, &regID, 1, true );
   i2c_read_blocking(I2C_PORT, sensor_addr, regDat,  1, false );
@@ -569,7 +569,7 @@ uint8_t ArduCAM::rdSensorReg8_8(uint8_t regID, uint8_t* regDat)
 	
 }
 
-uint8_t ArduCAM::rdSensorReg16_8(uint16_t regID, uint8_t* regDat)
+byte ArduCAM::rdSensorReg16_8(uint16_t regID, uint8_t* regDat)
 {
 	uint8_t buffer[2]={0};
 	buffer[0]=(regID>>8)&0xff;
@@ -580,7 +580,7 @@ uint8_t ArduCAM::rdSensorReg16_8(uint16_t regID, uint8_t* regDat)
 	return 1;
 }
 
-void ArduCAM::set_format(uint8_t fmt)
+void ArduCAM::set_format(byte fmt)
 {
   if (fmt == BMP)
     m_fmt = BMP;
@@ -623,6 +623,9 @@ void ArduCAM::OV5642_set_JPEG_size(uint8_t size)
 
   switch (size)
   {
+	case OV5642_64x64:
+	wrSensorRegs16_8(ov5642_64x64);
+      break;
     case OV5642_320x240:
       wrSensorRegs16_8(ov5642_320x240);
       break;

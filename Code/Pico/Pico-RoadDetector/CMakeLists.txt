@@ -170,10 +170,12 @@ ${CMAKE_CURRENT_LIST_DIR}/pico-tflmicro/src/third_party/cmsis/CMSIS/NN/Source/NN
 # Add executable
 add_executable(PicoRoadDetector
   src/main.cpp
-  src/ArduCAM.cpp
   src/ssd1306.c
   src/pca9546.c
-)
+  src/ArduCAM.cpp
+  src/picojpeg.c
+  src/jpeg_decoder.cpp
+  )
 
 # Add include directories for main executable
 target_include_directories(PicoRoadDetector PRIVATE
@@ -189,6 +191,7 @@ target_compile_definitions(PicoRoadDetector PRIVATE
   MODEL_WIDTH=${MODEL_WIDTH}
   MODEL_HEIGHT=${MODEL_HEIGHT}
   TF_LITE_MCU_DEBUG_LOG=1
+  BYTE_ALREADY_DEFINED=1
 )
 
 # Set compiler options

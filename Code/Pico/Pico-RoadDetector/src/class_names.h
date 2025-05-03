@@ -2,13 +2,13 @@
 #define CLASS_NAMES_H
 
 const char* class_names[7] = {
-    "bicycle",
-    "car",
-    "motorcycle",
-    "bus",
-    "truck",
-    "traffic Light",
-    "stop sign"
+    "BI",
+    "C",
+    "M",
+    "B",
+    "T",
+    "TL",
+    "SS"
 };
 
 #endif // CLASS_NAMES_H

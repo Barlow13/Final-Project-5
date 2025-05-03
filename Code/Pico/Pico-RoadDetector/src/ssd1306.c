@@ -198,4 +198,55 @@ void ssd1306_draw_string(uint8_t x, uint8_t y, const char *str, uint8_t size) {
         }
         i++;
     }
+}/**
+ * Draw a single pixel on the display
+ */
+void ssd1306_draw_pixel(uint8_t x, uint8_t y, uint8_t color) {
+    if (x >= OLED_WIDTH || y >= OLED_HEIGHT) {
+        return;  // Out of bounds
+    }
+    
+    // Calculate position in buffer
+    int page = y / 8;
+    int pos = page * OLED_WIDTH + x;
+    uint8_t bit = y % 8;
+    
+    // Set or clear the pixel
+    if (color) {
+        buffer[pos] |= (1 << bit);  // Set bit
+    } else {
+        buffer[pos] &= ~(1 << bit); // Clear bit
+    }
+}
+
+/**
+ * Draw a horizontal line
+ */
+void ssd1306_draw_hline(uint8_t x, uint8_t y, uint8_t width, uint8_t color) {
+    for (uint8_t i = 0; i < width; i++) {
+        ssd1306_draw_pixel(x + i, y, color);
+    }
+}
+
+/**
+ * Draw a rectangle outline
+ */
+void ssd1306_draw_rect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t color) {
+    // Draw the four sides of the rectangle
+    ssd1306_draw_hline(x, y, width, color);                 // Top
+    ssd1306_draw_hline(x, y + height - 1, width, color);    // Bottom
+    for (uint8_t i = 0; i < height; i++) {
+        ssd1306_draw_pixel(x, y + i, color);                // Left
+        ssd1306_draw_pixel(x + width - 1, y + i, color);    // Right
+    }
+}
+
+/**
+ * Draw a filled rectangle
+ */
+void ssd1306_fill_rect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t color) {
+    // Draw multiple horizontal lines to fill the rectangle
+    for (uint8_t i = 0; i < height; i++) {
+        ssd1306_draw_hline(x, y + i, width, color);
+    }
 }
