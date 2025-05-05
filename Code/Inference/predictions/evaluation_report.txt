@@ -1,15 +1,15 @@
 ===== Classification Report =====
                precision    recall  f1-score   support
 
-      bicycle       0.11      0.67      0.19        42
-          car       0.41      0.88      0.56       154
-   motorcycle       0.40      0.30      0.34        47
-          bus       0.48      0.50      0.49        64
-        truck       0.26      0.80      0.39        81
-traffic light       0.24      0.80      0.37        70
-    stop sign       0.62      0.29      0.40        17
+      bicycle       0.13      0.82      0.23        50
+          car       0.47      0.81      0.59       148
+   motorcycle       0.33      0.36      0.34        56
+          bus       0.41      0.32      0.36        66
+        truck       0.23      0.75      0.35        77
+traffic light       0.24      0.60      0.34        55
+    stop sign       0.36      0.28      0.31        18
 
-    micro avg       0.28      0.71      0.40       475
-    macro avg       0.36      0.61      0.39       475
- weighted avg       0.35      0.71      0.43       475
-  samples avg       0.18      0.38      0.23       475
+    micro avg       0.28      0.63      0.38       470
+    macro avg       0.31      0.56      0.36       470
+ weighted avg       0.34      0.63      0.41       470
+  samples avg       0.16      0.35      0.21       470

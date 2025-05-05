@@ -1,0 +1,863 @@
+/home/brady/tf-gpu/bin/python /mnt/c/Users/brady/OneDrive/Desktop/FInal-Project-5/Final-Project-5/Code/TensorFlow/Train.py 
+2025-05-05 04:38:05.316545: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-05-05 04:38:05.502500: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746437885.573830  770226 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746437885.593867  770226 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1746437885.753478  770226 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746437885.753517  770226 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746437885.753519  770226 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746437885.753520  770226 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-05-05 04:38:05.771507: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Creating dataset from COCO...
+I0000 00:00:1746437889.545072  770226 gpu_device.cc:2019] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 13512 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+2025-05-05 04:38:11.405458: I tensorflow/core/kernels/data/tf_record_dataset_op.cc:387] The default buffer size is 262144, which is overridden by the user specified `buffer_size` of 8388608
+Processed 500 records. Class distribution: {'bicycle': 48, 'car': 165, 'motorcycle': 44, 'bus': 48, 'truck': 81, 'traffic light': 56, 'stop sign': 23}
+Processed 1000 records. Class distribution: {'bicycle': 99, 'car': 322, 'motorcycle': 86, 'bus': 103, 'truck': 170, 'traffic light': 112, 'stop sign': 39}
+Processed 1500 records. Class distribution: {'bicycle': 143, 'car': 463, 'motorcycle': 142, 'bus': 145, 'truck': 243, 'traffic light': 155, 'stop sign': 69}
+Processed 2000 records. Class distribution: {'bicycle': 185, 'car': 617, 'motorcycle': 189, 'bus': 190, 'truck': 325, 'traffic light': 201, 'stop sign': 84}
+Processed 2500 records. Class distribution: {'bicycle': 222, 'car': 754, 'motorcycle': 231, 'bus': 241, 'truck': 384, 'traffic light': 256, 'stop sign': 95}
+Processed 3000 records. Class distribution: {'bicycle': 257, 'car': 874, 'motorcycle': 279, 'bus': 304, 'truck': 461, 'traffic light': 314, 'stop sign': 121}
+Processed 3500 records. Class distribution: {'bicycle': 302, 'car': 971, 'motorcycle': 330, 'bus': 340, 'truck': 543, 'traffic light': 352, 'stop sign': 146}
+Processed 4000 records. Class distribution: {'bicycle': 347, 'car': 1099, 'motorcycle': 378, 'bus': 393, 'truck': 617, 'traffic light': 399, 'stop sign': 159}
+Processed 4500 records. Class distribution: {'bicycle': 383, 'car': 1217, 'motorcycle': 416, 'bus': 454, 'truck': 695, 'traffic light': 458, 'stop sign': 178}
+Processed 5000 records. Class distribution: {'bicycle': 428, 'car': 1322, 'motorcycle': 461, 'bus': 503, 'truck': 748, 'traffic light': 518, 'stop sign': 203}
+Processed 5500 records. Class distribution: {'bicycle': 468, 'car': 1427, 'motorcycle': 501, 'bus': 578, 'truck': 790, 'traffic light': 577, 'stop sign': 224}
+Processed 6000 records. Class distribution: {'bicycle': 529, 'car': 1530, 'motorcycle': 546, 'bus': 630, 'truck': 843, 'traffic light': 635, 'stop sign': 244}
+Processed 6500 records. Class distribution: {'bicycle': 575, 'car': 1625, 'motorcycle': 587, 'bus': 687, 'truck': 881, 'traffic light': 693, 'stop sign': 267}
+Processed 7000 records. Class distribution: {'bicycle': 618, 'car': 1713, 'motorcycle': 643, 'bus': 721, 'truck': 917, 'traffic light': 732, 'stop sign': 302}
+Processed 7500 records. Class distribution: {'bicycle': 672, 'car': 1809, 'motorcycle': 712, 'bus': 747, 'truck': 965, 'traffic light': 764, 'stop sign': 323}
+Processed 8000 records. Class distribution: {'bicycle': 714, 'car': 1892, 'motorcycle': 736, 'bus': 774, 'truck': 997, 'traffic light': 791, 'stop sign': 351}
+Processed 8500 records. Class distribution: {'bicycle': 732, 'car': 1967, 'motorcycle': 755, 'bus': 790, 'truck': 1033, 'traffic light': 811, 'stop sign': 386}
+Processed 9000 records. Class distribution: {'bicycle': 752, 'car': 2048, 'motorcycle': 772, 'bus': 810, 'truck': 1080, 'traffic light': 839, 'stop sign': 430}
+Processed 9500 records. Class distribution: {'bicycle': 782, 'car': 2159, 'motorcycle': 797, 'bus': 851, 'truck': 1127, 'traffic light': 872, 'stop sign': 475}
+Processed 10000 records. Class distribution: {'bicycle': 843, 'car': 2462, 'motorcycle': 863, 'bus': 926, 'truck': 1261, 'traffic light': 971, 'stop sign': 590}
+Processed 10500 records. Class distribution: {'bicycle': 907, 'car': 2716, 'motorcycle': 921, 'bus': 1007, 'truck': 1407, 'traffic light': 1045, 'stop sign': 706}
+Processed 11000 records. Class distribution: {'bicycle': 993, 'car': 2982, 'motorcycle': 988, 'bus': 1103, 'truck': 1543, 'traffic light': 1132, 'stop sign': 753}
+Final class distribution: {'bicycle': 1042, 'car': 3164, 'motorcycle': 1030, 'bus': 1165, 'truck': 1640, 'traffic light': 1176, 'stop sign': 783}
+Processed 500 records. Class distribution: {'bicycle': 50, 'car': 161, 'motorcycle': 42, 'bus': 60, 'truck': 76, 'traffic light': 53, 'stop sign': 17}
+Processed 1000 records. Class distribution: {'bicycle': 88, 'car': 312, 'motorcycle': 81, 'bus': 113, 'truck': 143, 'traffic light': 109, 'stop sign': 37}
+Processed 1500 records. Class distribution: {'bicycle': 131, 'car': 450, 'motorcycle': 131, 'bus': 168, 'truck': 205, 'traffic light': 163, 'stop sign': 58}
+2025-05-05 04:39:35.465483: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Final class distribution: {'bicycle': 149, 'car': 535, 'motorcycle': 159, 'bus': 189, 'truck': 250, 'traffic light': 191, 'stop sign': 69}
+Created dataset with 11321 training and 1760 testing samples
+
+=== Stage 1: Training with Frozen Base Model ===
+/mnt/c/Users/brady/OneDrive/Desktop/FInal-Project-5/Final-Project-5/Code/TensorFlow/Train.py:273: UserWarning: `input_shape` is undefined or non-square, or `rows` is not in [96, 128, 160, 192, 224]. Weights for input shape (224, 224) will be loaded as the default.
+  base_model = MobileNetV2(
+Epoch 1/16
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1746437979.590173  770368 service.cc:152] XLA service 0x7ff16c054330 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+I0000 00:00:1746437979.590203  770368 service.cc:160]   StreamExecutor device (0): NVIDIA GeForce RTX 4090 Laptop GPU, Compute Capability 8.9
+2025-05-05 04:39:39.687311: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+I0000 00:00:1746437980.167201  770368 cuda_dnn.cc:529] Loaded cuDNN version 90800
+I0000 00:00:1746437983.928049  770368 device_compiler.h:188] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step - auc: 0.5384 - binary_accuracy: 0.7141 - loss: 0.1126 - precision: 0.2629 - recall: 0.11522025-05-05 04:39:52.143835: I external/local_xla/xla/stream_executor/cuda/subprocess_compilation.cc:346] ptxas warning : Registers are spilled to local memory in function 'gemm_fusion_dot_1209', 468 bytes spill stores, 468 bytes spill loads
+
+2025-05-05 04:39:52.328006: I external/local_xla/xla/stream_executor/cuda/subprocess_compilation.cc:346] ptxas warning : Registers are spilled to local memory in function 'gemm_fusion_dot_1209', 636 bytes spill stores, 636 bytes spill loads
+
+2025-05-05 04:39:52.389896: I external/local_xla/xla/stream_executor/cuda/subprocess_compilation.cc:346] ptxas warning : Registers are spilled to local memory in function 'gemm_fusion_dot_1209', 888 bytes spill stores, 888 bytes spill loads
+
+2025-05-05 04:39:57.410215: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Epoch 1: F1=0.0000, Precision=0.0000, Recall=0.0000, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.00
+2025-05-05 04:39:58.694589: I external/local_xla/xla/stream_executor/cuda/subprocess_compilation.cc:346] ptxas warning : Registers are spilled to local memory in function 'gemm_fusion_dot_1150', 52 bytes spill stores, 52 bytes spill loads
+
+2025-05-05 04:39:58.936399: I external/local_xla/xla/stream_executor/cuda/subprocess_compilation.cc:346] ptxas warning : Registers are spilled to local memory in function 'gemm_fusion_dot_1150', 512 bytes spill stores, 512 bytes spill loads
+
+
+Epoch 1: val_f1_macro improved from -inf to 0.00000, saving model to ./export/best_model_stage1.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 24s 50ms/step - auc: 0.5385 - binary_accuracy: 0.7141 - loss: 0.1124 - precision: 0.2629 - recall: 0.1150 - val_auc: 0.7348 - val_binary_accuracy: 0.8751 - val_loss: 0.0362 - val_precision: 0.0000e+00 - val_recall: 0.0000e+00 - val_f1_macro: 0.0000e+00 - learning_rate: 0.0010
+Epoch 2/16
+345/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6074 - binary_accuracy: 0.7781 - loss: 0.0412 - precision: 0.3717 - recall: 0.0148Epoch 2: F1=0.0000, Precision=0.0000, Recall=0.0000, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.00
+
+Epoch 2: val_f1_macro did not improve from 0.00000
+354/354 ━━━━━━━━━━━━━━━━━━━━ 6s 17ms/step - auc: 0.6077 - binary_accuracy: 0.7779 - loss: 0.0412 - precision: 0.3706 - recall: 0.0146 - val_auc: 0.7383 - val_binary_accuracy: 0.8751 - val_loss: 0.0341 - val_precision: 0.0000e+00 - val_recall: 0.0000e+00 - val_f1_macro: 0.0000e+00 - learning_rate: 0.0010
+Epoch 3/16
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6314 - binary_accuracy: 0.7859 - loss: 0.0356 - precision: 0.3860 - recall: 9.5596e-04Epoch 3: F1=0.0000, Precision=0.0000, Recall=0.0000, Thresholds: 0.50
+2025-05-05 04:40:14.697244: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.00
+
+Epoch 3: val_f1_macro did not improve from 0.00000
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.6314 - binary_accuracy: 0.7858 - loss: 0.0356 - precision: 0.3870 - recall: 9.5735e-04 - val_auc: 0.7425 - val_binary_accuracy: 0.8751 - val_loss: 0.0345 - val_precision: 0.0000e+00 - val_recall: 0.0000e+00 - val_f1_macro: 0.0000e+00 - learning_rate: 0.0010
+Epoch 4/16
+350/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6372 - binary_accuracy: 0.7816 - loss: 0.0339 - precision: 0.3562 - recall: 2.4931e-04Epoch 4: F1=0.0080, Precision=0.0952, Recall=0.0042, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.06
+
+Epoch 4: val_f1_macro improved from 0.00000 to 0.00805, saving model to ./export/best_model_stage1.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6373 - binary_accuracy: 0.7815 - loss: 0.0339 - precision: 0.3606 - recall: 2.5529e-04 - val_auc: 0.7479 - val_binary_accuracy: 0.8752 - val_loss: 0.0339 - val_precision: 0.6667 - val_recall: 0.0013 - val_f1_macro: 0.0080 - learning_rate: 0.0010
+Epoch 5/16
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6467 - binary_accuracy: 0.7833 - loss: 0.0324 - precision: 0.4908 - recall: 6.3506e-04Epoch 5: F1=0.2998, Precision=0.1947, Recall=0.6846, Thresholds: 0.27
+Class F1 scores: bicycle=0.23, car=0.49, motorcycle=0.26, bus=0.33, truck=0.29, traffic light=0.30, stop sign=0.21
+
+Epoch 5: val_f1_macro improved from 0.00805 to 0.29983, saving model to ./export/best_model_stage1.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6467 - binary_accuracy: 0.7832 - loss: 0.0324 - precision: 0.4937 - recall: 6.3740e-04 - val_auc: 0.7460 - val_binary_accuracy: 0.8752 - val_loss: 0.0333 - val_precision: 1.0000 - val_recall: 6.4977e-04 - val_f1_macro: 0.2998 - learning_rate: 0.0010
+Epoch 6/16
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6491 - binary_accuracy: 0.7827 - loss: 0.0319 - precision: 0.7188 - recall: 2.5292e-04Epoch 6: F1=0.3018, Precision=0.1940, Recall=0.7356, Thresholds: 0.27
+Class F1 scores: bicycle=0.22, car=0.49, motorcycle=0.27, bus=0.32, truck=0.29, traffic light=0.30, stop sign=0.22
+
+Epoch 6: val_f1_macro improved from 0.29983 to 0.30182, saving model to ./export/best_model_stage1.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6491 - binary_accuracy: 0.7826 - loss: 0.0319 - precision: 0.7211 - recall: 2.5973e-04 - val_auc: 0.7503 - val_binary_accuracy: 0.8752 - val_loss: 0.0334 - val_precision: 0.7500 - val_recall: 0.0019 - val_f1_macro: 0.3018 - learning_rate: 0.0010
+Epoch 7/16
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6593 - binary_accuracy: 0.7848 - loss: 0.0310 - precision: 0.8900 - recall: 8.9018e-04Epoch 7: F1=0.3004, Precision=0.2078, Recall=0.7045, Thresholds: 0.27
+2025-05-05 04:40:41.612452: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Class F1 scores: bicycle=0.22, car=0.47, motorcycle=0.28, bus=0.32, truck=0.29, traffic light=0.30, stop sign=0.22
+
+Epoch 7: val_f1_macro did not improve from 0.30182
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.6593 - binary_accuracy: 0.7848 - loss: 0.0310 - precision: 0.8897 - recall: 8.9162e-04 - val_auc: 0.7496 - val_binary_accuracy: 0.8753 - val_loss: 0.0335 - val_precision: 0.8000 - val_recall: 0.0026 - val_f1_macro: 0.3004 - learning_rate: 0.0010
+Epoch 8/16
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6719 - binary_accuracy: 0.7854 - loss: 0.0306 - precision: 0.9575 - recall: 0.0014Epoch 8: F1=0.3121, Precision=0.2395, Recall=0.7213, Thresholds: 0.27
+Class F1 scores: bicycle=0.22, car=0.49, motorcycle=0.29, bus=0.30, truck=0.30, traffic light=0.30, stop sign=0.29
+
+Epoch 8: val_f1_macro improved from 0.30182 to 0.31209, saving model to ./export/best_model_stage1.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6720 - binary_accuracy: 0.7852 - loss: 0.0306 - precision: 0.9568 - recall: 0.0014 - val_auc: 0.7561 - val_binary_accuracy: 0.8753 - val_loss: 0.0332 - val_precision: 0.7143 - val_recall: 0.0032 - val_f1_macro: 0.3121 - learning_rate: 0.0010
+Epoch 9/16
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6711 - binary_accuracy: 0.7842 - loss: 0.0304 - precision: 0.6773 - recall: 0.0016Epoch 9: F1=0.3017, Precision=0.2451, Recall=0.7381, Thresholds: 0.27
+Class F1 scores: bicycle=0.21, car=0.49, motorcycle=0.27, bus=0.30, truck=0.30, traffic light=0.28, stop sign=0.27
+
+Epoch 9: val_f1_macro did not improve from 0.31209
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.6712 - binary_accuracy: 0.7840 - loss: 0.0304 - precision: 0.6811 - recall: 0.0016 - val_auc: 0.7563 - val_binary_accuracy: 0.8753 - val_loss: 0.0334 - val_precision: 0.7143 - val_recall: 0.0032 - val_f1_macro: 0.3017 - learning_rate: 0.0010
+Epoch 10/16
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6752 - binary_accuracy: 0.7849 - loss: 0.0303 - precision: 0.7279 - recall: 7.0516e-04Epoch 10: F1=0.3122, Precision=0.2634, Recall=0.7324, Thresholds: 0.28
+Class F1 scores: bicycle=0.21, car=0.53, motorcycle=0.27, bus=0.29, truck=0.31, traffic light=0.28, stop sign=0.30
+
+Epoch 10: val_f1_macro improved from 0.31209 to 0.31216, saving model to ./export/best_model_stage1.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6753 - binary_accuracy: 0.7846 - loss: 0.0304 - precision: 0.7311 - recall: 7.2400e-04 - val_auc: 0.7553 - val_binary_accuracy: 0.8752 - val_loss: 0.0331 - val_precision: 0.6250 - val_recall: 0.0032 - val_f1_macro: 0.3122 - learning_rate: 0.0010
+Epoch 11/16
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6764 - binary_accuracy: 0.7831 - loss: 0.0304 - precision: 0.9523 - recall: 0.0011Epoch 11: F1=0.3090, Precision=0.2970, Recall=0.6294, Thresholds: 0.28
+Class F1 scores: bicycle=0.22, car=0.53, motorcycle=0.31, bus=0.30, truck=0.31, traffic light=0.29, stop sign=0.22
+
+Epoch 11: val_f1_macro did not improve from 0.31216
+354/354 ━━━━━━━━━━━━━━━━━━━━ 6s 17ms/step - auc: 0.6764 - binary_accuracy: 0.7830 - loss: 0.0304 - precision: 0.9516 - recall: 0.0011 - val_auc: 0.7540 - val_binary_accuracy: 0.8752 - val_loss: 0.0330 - val_precision: 0.6667 - val_recall: 0.0026 - val_f1_macro: 0.3090 - learning_rate: 0.0010
+Epoch 12/16
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6804 - binary_accuracy: 0.7851 - loss: 0.0300 - precision: 0.7515 - recall: 0.0014Epoch 12: F1=0.2423, Precision=0.2921, Recall=0.4940, Thresholds: 0.28
+Class F1 scores: bicycle=0.00, car=0.53, motorcycle=0.04, bus=0.30, truck=0.32, traffic light=0.30, stop sign=0.22
+
+Epoch 12: val_f1_macro did not improve from 0.31216
+
+Epoch 12: ReduceLROnPlateau reducing learning rate to 0.0005000000237487257.
+354/354 ━━━━━━━━━━━━━━━━━━━━ 6s 17ms/step - auc: 0.6804 - binary_accuracy: 0.7848 - loss: 0.0301 - precision: 0.7549 - recall: 0.0014 - val_auc: 0.7528 - val_binary_accuracy: 0.8752 - val_loss: 0.0329 - val_precision: 0.6667 - val_recall: 0.0026 - val_f1_macro: 0.2423 - learning_rate: 0.0010
+Epoch 13/16
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6825 - binary_accuracy: 0.7835 - loss: 0.0302 - precision: 0.8750 - recall: 0.0012Epoch 13: F1=0.2746, Precision=0.2907, Recall=0.4561, Thresholds: 0.28
+Class F1 scores: bicycle=0.00, car=0.56, motorcycle=0.18, bus=0.31, truck=0.31, traffic light=0.30, stop sign=0.26
+
+Epoch 13: val_f1_macro did not improve from 0.31216
+354/354 ━━━━━━━━━━━━━━━━━━━━ 6s 17ms/step - auc: 0.6824 - binary_accuracy: 0.7833 - loss: 0.0302 - precision: 0.8765 - recall: 0.0012 - val_auc: 0.7591 - val_binary_accuracy: 0.8752 - val_loss: 0.0323 - val_precision: 0.6667 - val_recall: 0.0026 - val_f1_macro: 0.2746 - learning_rate: 5.0000e-04
+Epoch 14/16
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6789 - binary_accuracy: 0.7828 - loss: 0.0301 - precision: 0.9616 - recall: 0.0020Epoch 14: F1=0.2291, Precision=0.2535, Recall=0.4036, Thresholds: 0.28
+Class F1 scores: bicycle=0.00, car=0.56, motorcycle=0.18, bus=0.31, truck=0.00, traffic light=0.30, stop sign=0.26
+
+Epoch 14: val_f1_macro did not improve from 0.31216
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6789 - binary_accuracy: 0.7827 - loss: 0.0301 - precision: 0.9616 - recall: 0.0020 - val_auc: 0.7597 - val_binary_accuracy: 0.8752 - val_loss: 0.0324 - val_precision: 0.6667 - val_recall: 0.0026 - val_f1_macro: 0.2291 - learning_rate: 5.0000e-04
+Epoch 15/16
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6780 - binary_accuracy: 0.7828 - loss: 0.0301 - precision: 0.7781 - recall: 0.00172025-05-05 04:41:34.632359: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Epoch 15: F1=0.3114, Precision=0.2795, Recall=0.7010, Thresholds: 0.26
+Class F1 scores: bicycle=0.19, car=0.56, motorcycle=0.27, bus=0.31, truck=0.28, traffic light=0.29, stop sign=0.29
+
+Epoch 15: val_f1_macro did not improve from 0.31216
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.6780 - binary_accuracy: 0.7827 - loss: 0.0301 - precision: 0.7809 - recall: 0.0018 - val_auc: 0.7560 - val_binary_accuracy: 0.8753 - val_loss: 0.0325 - val_precision: 0.7143 - val_recall: 0.0032 - val_f1_macro: 0.3114 - learning_rate: 5.0000e-04
+Epoch 16/16
+346/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6866 - binary_accuracy: 0.7850 - loss: 0.0299 - precision: 0.8420 - recall: 0.0016Epoch 16: F1=0.3045, Precision=0.2824, Recall=0.6769, Thresholds: 0.26
+Class F1 scores: bicycle=0.19, car=0.57, motorcycle=0.20, bus=0.31, truck=0.28, traffic light=0.30, stop sign=0.29
+
+Epoch 16: val_f1_macro did not improve from 0.31216
+
+Epoch 16: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+354/354 ━━━━━━━━━━━━━━━━━━━━ 6s 17ms/step - auc: 0.6865 - binary_accuracy: 0.7847 - loss: 0.0299 - precision: 0.8449 - recall: 0.0016 - val_auc: 0.7576 - val_binary_accuracy: 0.8754 - val_loss: 0.0324 - val_precision: 0.7500 - val_recall: 0.0039 - val_f1_macro: 0.3045 - learning_rate: 5.0000e-04
+Saved optimized thresholds to ./export/best_thresholds.npy
+/home/brady/tf-gpu/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in samples with no predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/brady/tf-gpu/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in samples with no true labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/brady/tf-gpu/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in samples with no true nor predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+
+Final Classification Report (on full test dataset):
+               precision    recall  f1-score   support
+
+      bicycle       0.10      0.94      0.19       149
+          car       0.43      0.81      0.57       534
+   motorcycle       0.34      0.14      0.20       159
+          bus       0.19      0.88      0.31       189
+        truck       0.17      0.95      0.28       249
+traffic light       0.18      0.82      0.30       191
+    stop sign       0.57      0.19      0.29        68
+
+    micro avg       0.21      0.76      0.33      1539
+    macro avg       0.28      0.68      0.30      1539
+ weighted avg       0.29      0.76      0.37      1539
+  samples avg       0.15      0.40      0.21      1539
+
+Restoring model weights from the end of the best epoch: 10.
+
+=== Stage 2: Fine-tuning Model ===
+/mnt/c/Users/brady/OneDrive/Desktop/FInal-Project-5/Final-Project-5/Code/TensorFlow/Train.py:273: UserWarning: `input_shape` is undefined or non-square, or `rows` is not in [96, 128, 160, 192, 224]. Weights for input shape (224, 224) will be loaded as the default.
+  base_model = MobileNetV2(
+Epoch 1/256
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 21ms/step - auc: 0.6373 - binary_accuracy: 0.7822 - loss: 0.0329 - precision: 0.3852 - recall: 0.0029Epoch 1: F1=0.0157, Precision=0.1143, Recall=0.0084, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.11
+
+Epoch 1: val_f1_macro improved from -inf to 0.01566, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 23s 44ms/step - auc: 0.6373 - binary_accuracy: 0.7822 - loss: 0.0329 - precision: 0.3854 - recall: 0.0029 - val_auc: 0.7682 - val_binary_accuracy: 0.8753 - val_loss: 0.0321 - val_precision: 0.8000 - val_recall: 0.0026 - val_f1_macro: 0.0157 - learning_rate: 1.0000e-04
+Epoch 2/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6641 - binary_accuracy: 0.7820 - loss: 0.0312 - precision: 0.6366 - recall: 0.0019Epoch 2: F1=0.0229, Precision=0.1224, Recall=0.0126, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.16
+
+Epoch 2: val_f1_macro improved from 0.01566 to 0.02286, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6640 - binary_accuracy: 0.7819 - loss: 0.0312 - precision: 0.6377 - recall: 0.0019 - val_auc: 0.7726 - val_binary_accuracy: 0.8755 - val_loss: 0.0318 - val_precision: 0.8571 - val_recall: 0.0039 - val_f1_macro: 0.0229 - learning_rate: 1.0000e-04
+Epoch 3/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6707 - binary_accuracy: 0.7808 - loss: 0.0310 - precision: 0.5292 - recall: 0.0022Epoch 3: F1=0.0159, Precision=0.1429, Recall=0.0084, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.11
+
+Epoch 3: val_f1_macro did not improve from 0.02286
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6705 - binary_accuracy: 0.7808 - loss: 0.0310 - precision: 0.5302 - recall: 0.0021 - val_auc: 0.7741 - val_binary_accuracy: 0.8754 - val_loss: 0.0318 - val_precision: 1.0000 - val_recall: 0.0026 - val_f1_macro: 0.0159 - learning_rate: 1.0000e-04
+Epoch 4/256
+349/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6761 - binary_accuracy: 0.7862 - loss: 0.0301 - precision: 0.6686 - recall: 7.2614e-04Epoch 4: F1=0.0229, Precision=0.1224, Recall=0.0126, Thresholds: 0.50
+Class F1 scores: bicycle=0.00, car=0.00, motorcycle=0.00, bus=0.00, truck=0.00, traffic light=0.00, stop sign=0.16
+
+Epoch 4: val_f1_macro did not improve from 0.02286
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6759 - binary_accuracy: 0.7860 - loss: 0.0302 - precision: 0.6726 - recall: 7.3988e-04 - val_auc: 0.7778 - val_binary_accuracy: 0.8755 - val_loss: 0.0315 - val_precision: 0.8571 - val_recall: 0.0039 - val_f1_macro: 0.0229 - learning_rate: 1.0000e-04
+Epoch 5/256
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6781 - binary_accuracy: 0.7870 - loss: 0.0298 - precision: 0.7017 - recall: 0.0023Epoch 5: F1=0.3374, Precision=0.2539, Recall=0.6337, Thresholds: 0.26
+Class F1 scores: bicycle=0.24, car=0.56, motorcycle=0.32, bus=0.35, truck=0.31, traffic light=0.31, stop sign=0.29
+
+Epoch 5: val_f1_macro improved from 0.02286 to 0.33740, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6777 - binary_accuracy: 0.7867 - loss: 0.0299 - precision: 0.7040 - recall: 0.0023 - val_auc: 0.7837 - val_binary_accuracy: 0.8754 - val_loss: 0.0311 - val_precision: 1.0000 - val_recall: 0.0026 - val_f1_macro: 0.3374 - learning_rate: 1.0000e-04
+Epoch 6/256
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6762 - binary_accuracy: 0.7838 - loss: 0.0300 - precision: 0.8341 - recall: 0.0019Epoch 6: F1=0.3437, Precision=0.2651, Recall=0.6086, Thresholds: 0.26
+Class F1 scores: bicycle=0.24, car=0.56, motorcycle=0.32, bus=0.37, truck=0.30, traffic light=0.32, stop sign=0.29
+
+Epoch 6: val_f1_macro improved from 0.33740 to 0.34369, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6762 - binary_accuracy: 0.7838 - loss: 0.0300 - precision: 0.8342 - recall: 0.0019 - val_auc: 0.7855 - val_binary_accuracy: 0.8754 - val_loss: 0.0310 - val_precision: 0.8333 - val_recall: 0.0032 - val_f1_macro: 0.3437 - learning_rate: 1.0000e-04
+Epoch 7/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6838 - binary_accuracy: 0.7841 - loss: 0.0301 - precision: 0.7667 - recall: 0.0019Epoch 7: F1=0.3439, Precision=0.2759, Recall=0.5626, Thresholds: 0.26
+Class F1 scores: bicycle=0.17, car=0.57, motorcycle=0.36, bus=0.37, truck=0.33, traffic light=0.33, stop sign=0.29
+
+Epoch 7: val_f1_macro improved from 0.34369 to 0.34391, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6835 - binary_accuracy: 0.7840 - loss: 0.0301 - precision: 0.7691 - recall: 0.0020 - val_auc: 0.7874 - val_binary_accuracy: 0.8756 - val_loss: 0.0309 - val_precision: 0.8889 - val_recall: 0.0052 - val_f1_macro: 0.3439 - learning_rate: 1.0000e-04
+Epoch 8/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6832 - binary_accuracy: 0.7829 - loss: 0.0299 - precision: 0.9298 - recall: 0.0016Epoch 8: F1=0.3422, Precision=0.2591, Recall=0.6070, Thresholds: 0.26
+Class F1 scores: bicycle=0.22, car=0.56, motorcycle=0.32, bus=0.37, truck=0.31, traffic light=0.31, stop sign=0.31
+
+Epoch 8: val_f1_macro did not improve from 0.34391
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6831 - binary_accuracy: 0.7828 - loss: 0.0299 - precision: 0.9299 - recall: 0.0016 - val_auc: 0.7866 - val_binary_accuracy: 0.8757 - val_loss: 0.0310 - val_precision: 0.9000 - val_recall: 0.0058 - val_f1_macro: 0.3422 - learning_rate: 1.0000e-04
+Epoch 9/256
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6884 - binary_accuracy: 0.7840 - loss: 0.0297 - precision: 0.8026 - recall: 0.0021Epoch 9: F1=0.3465, Precision=0.2650, Recall=0.5957, Thresholds: 0.26
+Class F1 scores: bicycle=0.19, car=0.56, motorcycle=0.34, bus=0.38, truck=0.31, traffic light=0.33, stop sign=0.31
+
+Epoch 9: val_f1_macro improved from 0.34391 to 0.34653, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6883 - binary_accuracy: 0.7840 - loss: 0.0297 - precision: 0.8035 - recall: 0.0021 - val_auc: 0.7867 - val_binary_accuracy: 0.8755 - val_loss: 0.0310 - val_precision: 0.7273 - val_recall: 0.0052 - val_f1_macro: 0.3465 - learning_rate: 1.0000e-04
+Epoch 10/256
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6865 - binary_accuracy: 0.7853 - loss: 0.0295 - precision: 0.7247 - recall: 0.0019Epoch 10: F1=0.3519, Precision=0.2710, Recall=0.6750, Thresholds: 0.25
+Class F1 scores: bicycle=0.21, car=0.57, motorcycle=0.34, bus=0.38, truck=0.32, traffic light=0.32, stop sign=0.33
+
+Epoch 10: val_f1_macro improved from 0.34653 to 0.35194, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 8s 20ms/step - auc: 0.6864 - binary_accuracy: 0.7852 - loss: 0.0295 - precision: 0.7255 - recall: 0.0019 - val_auc: 0.7908 - val_binary_accuracy: 0.8757 - val_loss: 0.0308 - val_precision: 1.0000 - val_recall: 0.0052 - val_f1_macro: 0.3519 - learning_rate: 1.0000e-04
+Epoch 11/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6882 - binary_accuracy: 0.7841 - loss: 0.0297 - precision: 0.9335 - recall: 0.0016Epoch 11: F1=0.3486, Precision=0.2575, Recall=0.6914, Thresholds: 0.25
+Class F1 scores: bicycle=0.19, car=0.56, motorcycle=0.35, bus=0.36, truck=0.32, traffic light=0.34, stop sign=0.31
+
+Epoch 11: val_f1_macro did not improve from 0.35194
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6880 - binary_accuracy: 0.7840 - loss: 0.0297 - precision: 0.9335 - recall: 0.0016 - val_auc: 0.7883 - val_binary_accuracy: 0.8757 - val_loss: 0.0310 - val_precision: 0.7857 - val_recall: 0.0071 - val_f1_macro: 0.3486 - learning_rate: 1.0000e-04
+Epoch 12/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6854 - binary_accuracy: 0.7846 - loss: 0.0297 - precision: 0.7914 - recall: 0.0022Epoch 12: F1=0.3510, Precision=0.2714, Recall=0.6701, Thresholds: 0.25
+Class F1 scores: bicycle=0.21, car=0.57, motorcycle=0.38, bus=0.36, truck=0.32, traffic light=0.34, stop sign=0.28
+
+Epoch 12: val_f1_macro did not improve from 0.35194
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6852 - binary_accuracy: 0.7844 - loss: 0.0297 - precision: 0.7940 - recall: 0.0022 - val_auc: 0.7922 - val_binary_accuracy: 0.8758 - val_loss: 0.0308 - val_precision: 1.0000 - val_recall: 0.0058 - val_f1_macro: 0.3510 - learning_rate: 1.0000e-04
+Epoch 13/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6904 - binary_accuracy: 0.7849 - loss: 0.0296 - precision: 0.8576 - recall: 0.0016Epoch 13: F1=0.3519, Precision=0.2727, Recall=0.6110, Thresholds: 0.25
+Class F1 scores: bicycle=0.21, car=0.57, motorcycle=0.38, bus=0.37, truck=0.33, traffic light=0.32, stop sign=0.29
+
+Epoch 13: val_f1_macro did not improve from 0.35194
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6901 - binary_accuracy: 0.7847 - loss: 0.0296 - precision: 0.8587 - recall: 0.0016 - val_auc: 0.7928 - val_binary_accuracy: 0.8758 - val_loss: 0.0307 - val_precision: 0.8000 - val_recall: 0.0078 - val_f1_macro: 0.3519 - learning_rate: 1.0000e-04
+Epoch 14/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6947 - binary_accuracy: 0.7846 - loss: 0.0294 - precision: 0.6750 - recall: 0.0017Epoch 14: F1=0.3523, Precision=0.2655, Recall=0.6723, Thresholds: 0.25
+2025-05-05 04:43:39.098562: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Class F1 scores: bicycle=0.20, car=0.57, motorcycle=0.38, bus=0.37, truck=0.32, traffic light=0.33, stop sign=0.29
+
+Epoch 14: val_f1_macro improved from 0.35194 to 0.35230, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6944 - binary_accuracy: 0.7844 - loss: 0.0294 - precision: 0.6788 - recall: 0.0018 - val_auc: 0.7907 - val_binary_accuracy: 0.8758 - val_loss: 0.0309 - val_precision: 1.0000 - val_recall: 0.0058 - val_f1_macro: 0.3523 - learning_rate: 1.0000e-04
+Epoch 15/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6886 - binary_accuracy: 0.7845 - loss: 0.0294 - precision: 0.7822 - recall: 0.0019Epoch 15: F1=0.3573, Precision=0.3113, Recall=0.6445, Thresholds: 0.27
+Class F1 scores: bicycle=0.21, car=0.57, motorcycle=0.37, bus=0.38, truck=0.32, traffic light=0.35, stop sign=0.31
+
+Epoch 15: val_f1_macro improved from 0.35230 to 0.35733, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 20ms/step - auc: 0.6884 - binary_accuracy: 0.7843 - loss: 0.0294 - precision: 0.7851 - recall: 0.0020 - val_auc: 0.7905 - val_binary_accuracy: 0.8759 - val_loss: 0.0308 - val_precision: 0.9167 - val_recall: 0.0071 - val_f1_macro: 0.3573 - learning_rate: 1.0000e-04
+Epoch 16/256
+350/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6885 - binary_accuracy: 0.7818 - loss: 0.0297 - precision: 0.8516 - recall: 0.0021Epoch 16: F1=0.3572, Precision=0.3179, Recall=0.6576, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.57, motorcycle=0.38, bus=0.37, truck=0.33, traffic light=0.34, stop sign=0.32
+
+Epoch 16: val_f1_macro did not improve from 0.35733
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6883 - binary_accuracy: 0.7817 - loss: 0.0297 - precision: 0.8526 - recall: 0.0021 - val_auc: 0.7939 - val_binary_accuracy: 0.8758 - val_loss: 0.0307 - val_precision: 0.9091 - val_recall: 0.0065 - val_f1_macro: 0.3572 - learning_rate: 1.0000e-04
+Epoch 17/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6954 - binary_accuracy: 0.7842 - loss: 0.0293 - precision: 0.7603 - recall: 0.0016Epoch 17: F1=0.3614, Precision=0.3341, Recall=0.6059, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.38, bus=0.39, truck=0.33, traffic light=0.33, stop sign=0.32
+
+Epoch 17: val_f1_macro improved from 0.35733 to 0.36142, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6952 - binary_accuracy: 0.7841 - loss: 0.0293 - precision: 0.7614 - recall: 0.0016 - val_auc: 0.7942 - val_binary_accuracy: 0.8759 - val_loss: 0.0306 - val_precision: 0.9167 - val_recall: 0.0071 - val_f1_macro: 0.3614 - learning_rate: 1.0000e-04
+Epoch 18/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6940 - binary_accuracy: 0.7843 - loss: 0.0295 - precision: 0.9111 - recall: 0.0026Epoch 18: F1=0.3524, Precision=0.3120, Recall=0.6190, Thresholds: 0.27
+Class F1 scores: bicycle=0.19, car=0.56, motorcycle=0.37, bus=0.38, truck=0.33, traffic light=0.32, stop sign=0.31
+
+Epoch 18: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6937 - binary_accuracy: 0.7841 - loss: 0.0295 - precision: 0.9119 - recall: 0.0026 - val_auc: 0.7872 - val_binary_accuracy: 0.8759 - val_loss: 0.0309 - val_precision: 0.9167 - val_recall: 0.0071 - val_f1_macro: 0.3524 - learning_rate: 1.0000e-04
+Epoch 19/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6966 - binary_accuracy: 0.7835 - loss: 0.0292 - precision: 0.8316 - recall: 0.0023Epoch 19: F1=0.3501, Precision=0.2860, Recall=0.6612, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.55, motorcycle=0.38, bus=0.37, truck=0.33, traffic light=0.32, stop sign=0.31
+
+Epoch 19: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6965 - binary_accuracy: 0.7834 - loss: 0.0292 - precision: 0.8325 - recall: 0.0023 - val_auc: 0.7888 - val_binary_accuracy: 0.8761 - val_loss: 0.0309 - val_precision: 0.9286 - val_recall: 0.0084 - val_f1_macro: 0.3501 - learning_rate: 1.0000e-04
+Epoch 20/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6925 - binary_accuracy: 0.7836 - loss: 0.0291 - precision: 0.8183 - recall: 0.0026Epoch 20: F1=0.3612, Precision=0.3427, Recall=0.5765, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.56, motorcycle=0.38, bus=0.42, truck=0.33, traffic light=0.32, stop sign=0.31
+
+Epoch 20: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6924 - binary_accuracy: 0.7835 - loss: 0.0291 - precision: 0.8192 - recall: 0.0026 - val_auc: 0.7911 - val_binary_accuracy: 0.8756 - val_loss: 0.0308 - val_precision: 0.8889 - val_recall: 0.0052 - val_f1_macro: 0.3612 - learning_rate: 1.0000e-04
+Epoch 21/256
+349/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6936 - binary_accuracy: 0.7824 - loss: 0.0293 - precision: 0.6651 - recall: 0.0017Epoch 21: F1=0.3564, Precision=0.3152, Recall=0.6202, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.55, motorcycle=0.37, bus=0.40, truck=0.32, traffic light=0.34, stop sign=0.31
+
+Epoch 21: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6934 - binary_accuracy: 0.7823 - loss: 0.0293 - precision: 0.6687 - recall: 0.0017 - val_auc: 0.7885 - val_binary_accuracy: 0.8759 - val_loss: 0.0309 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3564 - learning_rate: 1.0000e-04
+Epoch 22/256
+349/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6926 - binary_accuracy: 0.7825 - loss: 0.0292 - precision: 0.9315 - recall: 0.0033Epoch 22: F1=0.3560, Precision=0.3404, Recall=0.5785, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.56, motorcycle=0.37, bus=0.36, truck=0.33, traffic light=0.33, stop sign=0.33
+
+Epoch 22: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6924 - binary_accuracy: 0.7824 - loss: 0.0292 - precision: 0.9316 - recall: 0.0033 - val_auc: 0.7920 - val_binary_accuracy: 0.8759 - val_loss: 0.0307 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3560 - learning_rate: 1.0000e-04
+Epoch 23/256
+350/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6941 - binary_accuracy: 0.7827 - loss: 0.0292 - precision: 0.9245 - recall: 0.0028Epoch 23: F1=0.3606, Precision=0.3318, Recall=0.6030, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.57, motorcycle=0.37, bus=0.38, truck=0.33, traffic light=0.35, stop sign=0.32
+
+Epoch 23: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6940 - binary_accuracy: 0.7826 - loss: 0.0292 - precision: 0.9250 - recall: 0.0028 - val_auc: 0.7927 - val_binary_accuracy: 0.8759 - val_loss: 0.0307 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3606 - learning_rate: 1.0000e-04
+Epoch 24/256
+350/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6944 - binary_accuracy: 0.7834 - loss: 0.0291 - precision: 0.6294 - recall: 0.0017Epoch 24: F1=0.3591, Precision=0.3339, Recall=0.5999, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.57, motorcycle=0.36, bus=0.40, truck=0.33, traffic light=0.33, stop sign=0.32
+
+Epoch 24: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6942 - binary_accuracy: 0.7833 - loss: 0.0291 - precision: 0.6332 - recall: 0.0018 - val_auc: 0.7919 - val_binary_accuracy: 0.8757 - val_loss: 0.0307 - val_precision: 0.7857 - val_recall: 0.0071 - val_f1_macro: 0.3591 - learning_rate: 1.0000e-04
+Epoch 25/256
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6956 - binary_accuracy: 0.7851 - loss: 0.0290 - precision: 0.8944 - recall: 0.0038Epoch 25: F1=0.3571, Precision=0.3540, Recall=0.6263, Thresholds: 0.29
+Class F1 scores: bicycle=0.20, car=0.56, motorcycle=0.37, bus=0.37, truck=0.32, traffic light=0.33, stop sign=0.34
+
+Epoch 25: val_f1_macro did not improve from 0.36142
+
+Epoch 25: ReduceLROnPlateau reducing learning rate to 4.999999873689376e-05.
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6955 - binary_accuracy: 0.7850 - loss: 0.0290 - precision: 0.8948 - recall: 0.0038 - val_auc: 0.7884 - val_binary_accuracy: 0.8760 - val_loss: 0.0310 - val_precision: 0.7895 - val_recall: 0.0097 - val_f1_macro: 0.3571 - learning_rate: 1.0000e-04
+Epoch 26/256
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6896 - binary_accuracy: 0.7817 - loss: 0.0293 - precision: 0.8234 - recall: 0.0034Epoch 26: F1=0.3511, Precision=0.3856, Recall=0.5692, Thresholds: 0.29
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.39, bus=0.38, truck=0.33, traffic light=0.34, stop sign=0.23
+
+Epoch 26: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.6895 - binary_accuracy: 0.7816 - loss: 0.0293 - precision: 0.8239 - recall: 0.0034 - val_auc: 0.7993 - val_binary_accuracy: 0.8757 - val_loss: 0.0303 - val_precision: 0.9000 - val_recall: 0.0058 - val_f1_macro: 0.3511 - learning_rate: 5.0000e-05
+Epoch 27/256
+353/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6967 - binary_accuracy: 0.7835 - loss: 0.0288 - precision: 0.8403 - recall: 0.0024Epoch 27: F1=0.3460, Precision=0.3823, Recall=0.5392, Thresholds: 0.29
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.34, bus=0.36, truck=0.34, traffic light=0.33, stop sign=0.25
+
+Epoch 27: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6966 - binary_accuracy: 0.7835 - loss: 0.0288 - precision: 0.8409 - recall: 0.0024 - val_auc: 0.7992 - val_binary_accuracy: 0.8758 - val_loss: 0.0303 - val_precision: 0.8462 - val_recall: 0.0071 - val_f1_macro: 0.3460 - learning_rate: 5.0000e-05
+Epoch 28/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6972 - binary_accuracy: 0.7848 - loss: 0.0287 - precision: 0.8449 - recall: 0.0028Epoch 28: F1=0.3550, Precision=0.3805, Recall=0.5538, Thresholds: 0.29
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.35, bus=0.39, truck=0.35, traffic light=0.33, stop sign=0.27
+
+Epoch 28: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6971 - binary_accuracy: 0.7846 - loss: 0.0287 - precision: 0.8468 - recall: 0.0028 - val_auc: 0.8006 - val_binary_accuracy: 0.8758 - val_loss: 0.0303 - val_precision: 0.8462 - val_recall: 0.0071 - val_f1_macro: 0.3550 - learning_rate: 5.0000e-05
+Epoch 29/256
+353/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6948 - binary_accuracy: 0.7841 - loss: 0.0290 - precision: 0.6378 - recall: 0.0021Epoch 29: F1=0.3579, Precision=0.3887, Recall=0.5519, Thresholds: 0.29
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.38, bus=0.37, truck=0.34, traffic light=0.33, stop sign=0.30
+
+Epoch 29: val_f1_macro did not improve from 0.36142
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6947 - binary_accuracy: 0.7841 - loss: 0.0290 - precision: 0.6390 - recall: 0.0021 - val_auc: 0.7998 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3579 - learning_rate: 5.0000e-05
+Epoch 30/256
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6920 - binary_accuracy: 0.7814 - loss: 0.0291 - precision: 0.8606 - recall: 0.0028 Epoch 30: F1=0.3631, Precision=0.3742, Recall=0.5837, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.59, motorcycle=0.35, bus=0.38, truck=0.34, traffic light=0.33, stop sign=0.35
+
+Epoch 30: val_f1_macro improved from 0.36142 to 0.36311, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 20ms/step - auc: 0.6918 - binary_accuracy: 0.7813 - loss: 0.0292 - precision: 0.8622 - recall: 0.0028 - val_auc: 0.7997 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3631 - learning_rate: 5.0000e-05
+Epoch 31/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6971 - binary_accuracy: 0.7845 - loss: 0.0288 - precision: 0.8703 - recall: 0.0035Epoch 31: F1=0.3623, Precision=0.3608, Recall=0.5828, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.36, bus=0.39, truck=0.33, traffic light=0.33, stop sign=0.34
+
+Epoch 31: val_f1_macro did not improve from 0.36311
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.6969 - binary_accuracy: 0.7843 - loss: 0.0288 - precision: 0.8717 - recall: 0.0035 - val_auc: 0.8005 - val_binary_accuracy: 0.8760 - val_loss: 0.0303 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3623 - learning_rate: 5.0000e-05
+Epoch 32/256
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6931 - binary_accuracy: 0.7846 - loss: 0.0288 - precision: 0.8907 - recall: 0.0033Epoch 32: F1=0.3634, Precision=0.3537, Recall=0.5911, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.59, motorcycle=0.37, bus=0.39, truck=0.34, traffic light=0.33, stop sign=0.33
+
+Epoch 32: val_f1_macro improved from 0.36311 to 0.36342, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6930 - binary_accuracy: 0.7846 - loss: 0.0288 - precision: 0.8911 - recall: 0.0033 - val_auc: 0.8007 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3634 - learning_rate: 5.0000e-05
+Epoch 33/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.7007 - binary_accuracy: 0.7864 - loss: 0.0285 - precision: 0.8545 - recall: 0.0029Epoch 33: F1=0.3555, Precision=0.3498, Recall=0.5744, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.35, bus=0.37, truck=0.34, traffic light=0.33, stop sign=0.31
+
+Epoch 33: val_f1_macro did not improve from 0.36342
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.7004 - binary_accuracy: 0.7862 - loss: 0.0285 - precision: 0.8563 - recall: 0.0030 - val_auc: 0.8018 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3555 - learning_rate: 5.0000e-05
+Epoch 34/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6930 - binary_accuracy: 0.7869 - loss: 0.0284 - precision: 0.8709 - recall: 0.0031Epoch 34: F1=0.3628, Precision=0.3593, Recall=0.5757, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.37, bus=0.38, truck=0.34, traffic light=0.33, stop sign=0.33
+
+Epoch 34: val_f1_macro did not improve from 0.36342
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6929 - binary_accuracy: 0.7867 - loss: 0.0284 - precision: 0.8716 - recall: 0.0031 - val_auc: 0.8025 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3628 - learning_rate: 5.0000e-05
+Epoch 35/256
+352/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6982 - binary_accuracy: 0.7817 - loss: 0.0286 - precision: 0.7860 - recall: 0.0032Epoch 35: F1=0.3686, Precision=0.3671, Recall=0.5454, Thresholds: 0.28
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.37, bus=0.41, truck=0.34, traffic light=0.35, stop sign=0.33
+
+Epoch 35: val_f1_macro improved from 0.36342 to 0.36857, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6981 - binary_accuracy: 0.7816 - loss: 0.0287 - precision: 0.7869 - recall: 0.0032 - val_auc: 0.8029 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3686 - learning_rate: 5.0000e-05
+Epoch 36/256
+349/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6972 - binary_accuracy: 0.7851 - loss: 0.0287 - precision: 0.8479 - recall: 0.0044Epoch 36: F1=0.3652, Precision=0.3831, Recall=0.5407, Thresholds: 0.28
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.39, bus=0.42, truck=0.34, traffic light=0.32, stop sign=0.31
+
+Epoch 36: val_f1_macro did not improve from 0.36857
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6970 - binary_accuracy: 0.7850 - loss: 0.0287 - precision: 0.8489 - recall: 0.0044 - val_auc: 0.8031 - val_binary_accuracy: 0.8758 - val_loss: 0.0302 - val_precision: 0.9091 - val_recall: 0.0065 - val_f1_macro: 0.3652 - learning_rate: 5.0000e-05
+Epoch 37/256
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6988 - binary_accuracy: 0.7844 - loss: 0.0288 - precision: 0.7761 - recall: 0.0036Epoch 37: F1=0.3687, Precision=0.3696, Recall=0.5604, Thresholds: 0.28
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.38, bus=0.41, truck=0.34, traffic light=0.33, stop sign=0.34
+
+Epoch 37: val_f1_macro improved from 0.36857 to 0.36865, saving model to ./export/best_model_final.keras
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6986 - binary_accuracy: 0.7842 - loss: 0.0288 - precision: 0.7792 - recall: 0.0037 - val_auc: 0.8025 - val_binary_accuracy: 0.8759 - val_loss: 0.0302 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3687 - learning_rate: 5.0000e-05
+Epoch 38/256
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6960 - binary_accuracy: 0.7844 - loss: 0.0284 - precision: 0.8455 - recall: 0.0042Epoch 38: F1=0.3585, Precision=0.3556, Recall=0.5578, Thresholds: 0.28
+Class F1 scores: bicycle=0.20, car=0.57, motorcycle=0.37, bus=0.40, truck=0.34, traffic light=0.32, stop sign=0.30
+
+Epoch 38: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6959 - binary_accuracy: 0.7844 - loss: 0.0284 - precision: 0.8456 - recall: 0.0042 - val_auc: 0.8024 - val_binary_accuracy: 0.8758 - val_loss: 0.0302 - val_precision: 0.9091 - val_recall: 0.0065 - val_f1_macro: 0.3585 - learning_rate: 5.0000e-05
+Epoch 39/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6965 - binary_accuracy: 0.7825 - loss: 0.0287 - precision: 0.8207 - recall: 0.0040 Epoch 39: F1=0.3659, Precision=0.3633, Recall=0.5362, Thresholds: 0.28
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.37, bus=0.40, truck=0.34, traffic light=0.33, stop sign=0.33
+
+Epoch 39: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6964 - binary_accuracy: 0.7824 - loss: 0.0287 - precision: 0.8216 - recall: 0.0040 - val_auc: 0.8040 - val_binary_accuracy: 0.8759 - val_loss: 0.0301 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3659 - learning_rate: 5.0000e-05
+Epoch 40/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6976 - binary_accuracy: 0.7833 - loss: 0.0285 - precision: 0.7634 - recall: 0.0030 Epoch 40: F1=0.3650, Precision=0.3644, Recall=0.5744, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.38, bus=0.39, truck=0.34, traffic light=0.33, stop sign=0.34
+
+Epoch 40: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6974 - binary_accuracy: 0.7831 - loss: 0.0285 - precision: 0.7658 - recall: 0.0031 - val_auc: 0.8027 - val_binary_accuracy: 0.8758 - val_loss: 0.0302 - val_precision: 0.8462 - val_recall: 0.0071 - val_f1_macro: 0.3650 - learning_rate: 5.0000e-05
+Epoch 41/256
+349/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.7041 - binary_accuracy: 0.7819 - loss: 0.0283 - precision: 0.9132 - recall: 0.0037 Epoch 41: F1=0.3621, Precision=0.3509, Recall=0.5613, Thresholds: 0.27
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.36, bus=0.38, truck=0.35, traffic light=0.34, stop sign=0.32
+
+Epoch 41: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.7039 - binary_accuracy: 0.7817 - loss: 0.0283 - precision: 0.9135 - recall: 0.0037 - val_auc: 0.8018 - val_binary_accuracy: 0.8758 - val_loss: 0.0303 - val_precision: 0.8462 - val_recall: 0.0071 - val_f1_macro: 0.3621 - learning_rate: 5.0000e-05
+Epoch 42/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6973 - binary_accuracy: 0.7838 - loss: 0.0284 - precision: 0.8388 - recall: 0.0039Epoch 42: F1=0.3630, Precision=0.3604, Recall=0.5883, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.37, bus=0.39, truck=0.34, traffic light=0.32, stop sign=0.34
+
+Epoch 42: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6972 - binary_accuracy: 0.7837 - loss: 0.0284 - precision: 0.8397 - recall: 0.0039 - val_auc: 0.8026 - val_binary_accuracy: 0.8760 - val_loss: 0.0302 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3630 - learning_rate: 5.0000e-05
+Epoch 43/256
+349/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.7003 - binary_accuracy: 0.7845 - loss: 0.0286 - precision: 0.8546 - recall: 0.0042Epoch 43: F1=0.3594, Precision=0.3744, Recall=0.5790, Thresholds: 0.27
+Class F1 scores: bicycle=0.20, car=0.57, motorcycle=0.37, bus=0.40, truck=0.34, traffic light=0.33, stop sign=0.31
+
+Epoch 43: val_f1_macro did not improve from 0.36865
+
+Epoch 43: ReduceLROnPlateau reducing learning rate to 2.499999936844688e-05.
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 17ms/step - auc: 0.7001 - binary_accuracy: 0.7843 - loss: 0.0286 - precision: 0.8560 - recall: 0.0043 - val_auc: 0.8008 - val_binary_accuracy: 0.8759 - val_loss: 0.0303 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3594 - learning_rate: 5.0000e-05
+Epoch 44/256
+351/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6972 - binary_accuracy: 0.7831 - loss: 0.0287 - precision: 0.8727 - recall: 0.0040Epoch 44: F1=0.3587, Precision=0.3740, Recall=0.5804, Thresholds: 0.27
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.37, bus=0.38, truck=0.34, traffic light=0.33, stop sign=0.31
+
+Epoch 44: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6970 - binary_accuracy: 0.7830 - loss: 0.0287 - precision: 0.8734 - recall: 0.0040 - val_auc: 0.8041 - val_binary_accuracy: 0.8759 - val_loss: 0.0301 - val_precision: 0.8571 - val_recall: 0.0078 - val_f1_macro: 0.3587 - learning_rate: 2.5000e-05
+Epoch 45/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6948 - binary_accuracy: 0.7827 - loss: 0.0286 - precision: 0.8282 - recall: 0.0031Epoch 45: F1=0.3664, Precision=0.3291, Recall=0.5521, Thresholds: 0.26
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.36, bus=0.40, truck=0.34, traffic light=0.35, stop sign=0.33
+
+Epoch 45: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6947 - binary_accuracy: 0.7826 - loss: 0.0286 - precision: 0.8307 - recall: 0.0032 - val_auc: 0.8053 - val_binary_accuracy: 0.8760 - val_loss: 0.0301 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3664 - learning_rate: 2.5000e-05
+Epoch 46/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6993 - binary_accuracy: 0.7829 - loss: 0.0284 - precision: 0.8311 - recall: 0.0041Epoch 46: F1=0.3665, Precision=0.3291, Recall=0.5551, Thresholds: 0.26
+2025-05-05 04:47:17.244703: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.36, bus=0.41, truck=0.34, traffic light=0.34, stop sign=0.33
+
+Epoch 46: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6991 - binary_accuracy: 0.7827 - loss: 0.0284 - precision: 0.8327 - recall: 0.0042 - val_auc: 0.8052 - val_binary_accuracy: 0.8760 - val_loss: 0.0301 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3665 - learning_rate: 2.5000e-05
+Epoch 47/256
+350/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6923 - binary_accuracy: 0.7848 - loss: 0.0284 - precision: 0.8100 - recall: 0.0045Epoch 47: F1=0.3655, Precision=0.3302, Recall=0.5398, Thresholds: 0.26
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.35, bus=0.41, truck=0.34, traffic light=0.34, stop sign=0.33
+
+Epoch 47: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6922 - binary_accuracy: 0.7846 - loss: 0.0284 - precision: 0.8114 - recall: 0.0045 - val_auc: 0.8062 - val_binary_accuracy: 0.8760 - val_loss: 0.0301 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3655 - learning_rate: 2.5000e-05
+Epoch 48/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6958 - binary_accuracy: 0.7817 - loss: 0.0286 - precision: 0.7467 - recall: 0.0038Epoch 48: F1=0.3624, Precision=0.3258, Recall=0.5439, Thresholds: 0.26
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.36, bus=0.40, truck=0.34, traffic light=0.34, stop sign=0.31
+
+Epoch 48: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6957 - binary_accuracy: 0.7816 - loss: 0.0286 - precision: 0.7492 - recall: 0.0038 - val_auc: 0.8075 - val_binary_accuracy: 0.8760 - val_loss: 0.0300 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3624 - learning_rate: 2.5000e-05
+Epoch 49/256
+354/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6988 - binary_accuracy: 0.7828 - loss: 0.0283 - precision: 0.9142 - recall: 0.0041Epoch 49: F1=0.3650, Precision=0.3275, Recall=0.5387, Thresholds: 0.26
+Class F1 scores: bicycle=0.21, car=0.58, motorcycle=0.37, bus=0.40, truck=0.34, traffic light=0.35, stop sign=0.31
+
+Epoch 49: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6987 - binary_accuracy: 0.7828 - loss: 0.0283 - precision: 0.9143 - recall: 0.0041 - val_auc: 0.8077 - val_binary_accuracy: 0.8760 - val_loss: 0.0300 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3650 - learning_rate: 2.5000e-05
+Epoch 50/256
+350/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6954 - binary_accuracy: 0.7838 - loss: 0.0283 - precision: 0.8280 - recall: 0.0044Epoch 50: F1=0.3627, Precision=0.3091, Recall=0.5607, Thresholds: 0.26
+Class F1 scores: bicycle=0.21, car=0.57, motorcycle=0.37, bus=0.40, truck=0.34, traffic light=0.34, stop sign=0.31
+
+Epoch 50: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 19ms/step - auc: 0.6953 - binary_accuracy: 0.7837 - loss: 0.0284 - precision: 0.8291 - recall: 0.0044 - val_auc: 0.8066 - val_binary_accuracy: 0.8760 - val_loss: 0.0300 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3627 - learning_rate: 2.5000e-05
+Epoch 51/256
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6950 - binary_accuracy: 0.7838 - loss: 0.0283 - precision: 0.9023 - recall: 0.0056Epoch 51: F1=0.3657, Precision=0.3146, Recall=0.5590, Thresholds: 0.26
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.38, bus=0.41, truck=0.34, traffic light=0.34, stop sign=0.31
+
+Epoch 51: val_f1_macro did not improve from 0.36865
+
+Epoch 51: ReduceLROnPlateau reducing learning rate to 1.249999968422344e-05.
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6948 - binary_accuracy: 0.7836 - loss: 0.0283 - precision: 0.9029 - recall: 0.0056 - val_auc: 0.8072 - val_binary_accuracy: 0.8760 - val_loss: 0.0300 - val_precision: 0.8667 - val_recall: 0.0084 - val_f1_macro: 0.3657 - learning_rate: 2.5000e-05
+Epoch 52/256
+348/354 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - auc: 0.6943 - binary_accuracy: 0.7849 - loss: 0.0281 - precision: 0.8746 - recall: 0.0041Epoch 52: F1=0.3672, Precision=0.3149, Recall=0.5565, Thresholds: 0.26
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.37, bus=0.40, truck=0.35, traffic light=0.34, stop sign=0.32
+
+Epoch 52: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6942 - binary_accuracy: 0.7847 - loss: 0.0281 - precision: 0.8755 - recall: 0.0041 - val_auc: 0.8081 - val_binary_accuracy: 0.8761 - val_loss: 0.0300 - val_precision: 0.9286 - val_recall: 0.0084 - val_f1_macro: 0.3672 - learning_rate: 1.2500e-05
+Epoch 53/256
+347/354 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - auc: 0.6998 - binary_accuracy: 0.7841 - loss: 0.0282 - precision: 0.8830 - recall: 0.0035Epoch 53: F1=0.3658, Precision=0.3151, Recall=0.5501, Thresholds: 0.26
+Class F1 scores: bicycle=0.20, car=0.58, motorcycle=0.37, bus=0.40, truck=0.35, traffic light=0.34, stop sign=0.31
+
+Epoch 53: val_f1_macro did not improve from 0.36865
+354/354 ━━━━━━━━━━━━━━━━━━━━ 7s 18ms/step - auc: 0.6996 - binary_accuracy: 0.7839 - loss: 0.0282 - precision: 0.8836 - recall: 0.0036 - val_auc: 0.8085 - val_binary_accuracy: 0.8761 - val_loss: 0.0300 - val_precision: 0.9286 - val_recall: 0.0084 - val_f1_macro: 0.3658 - learning_rate: 1.2500e-05
+Saved optimized thresholds to ./export/best_thresholds.npy
+/home/brady/tf-gpu/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in samples with no predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/brady/tf-gpu/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in samples with no true labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/brady/tf-gpu/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in samples with no true nor predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+
+Final Classification Report (on full test dataset):
+               precision    recall  f1-score   support
+
+      bicycle       0.12      0.71      0.20       149
+          car       0.49      0.72      0.58       534
+   motorcycle       0.34      0.42      0.37       159
+          bus       0.47      0.35      0.40       189
+        truck       0.23      0.74      0.35       249
+traffic light       0.24      0.61      0.34       191
+    stop sign       0.33      0.29      0.31        68
+
+    micro avg       0.28      0.61      0.38      1539
+    macro avg       0.32      0.55      0.37      1539
+ weighted avg       0.35      0.61      0.42      1539
+  samples avg       0.15      0.31      0.19      1539
+
+Epoch 53: early stopping
+Restoring model weights from the end of the best epoch: 37.
+
+=== Converting to TFLite for RP2040 Deployment ===
+Model: "sequential_1"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ mobilenetv2_0.35_224            │ (None, 2, 2, 1280)     │       410,208 │
+│ (Functional)                    │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ global_average_pooling2d_1      │ (None, 1280)           │             0 │
+│ (GlobalAveragePooling2D)        │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_2 (Dropout)             │ (None, 1280)           │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (Dense)                 │ (None, 48)             │        61,488 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_3 (Dropout)             │ (None, 48)             │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_3 (Dense)                 │ (None, 7)              │           343 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 1,133,047 (4.32 MB)
+ Trainable params: 330,503 (1.26 MB)
+ Non-trainable params: 141,536 (552.88 KB)
+ Optimizer params: 661,008 (2.52 MB)
+Saved artifact at '/tmp/tmprl7i26fq'. The following endpoints are available:
+
+* Endpoint 'serve'
+  args_0 (POSITIONAL_ONLY): TensorSpec(shape=(None, 64, 64, 3), dtype=tf.float32, name='input_layer_3')
+Output Type:
+  TensorSpec(shape=(None, 7), dtype=tf.float32, name=None)
+Captures:
+  140675352484688: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350347856: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350354960: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350359184: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350354384: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350352080: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350351120: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350358032: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350351504: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350355536: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350356688: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350357264: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350355152: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350358800: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350357648: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350353616: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350350928: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350356112: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350353808: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350360336: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350360528: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350351312: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350360720: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350359376: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350354576: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350361872: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350362256: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350362640: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350362448: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350354000: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350363792: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350354192: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999374928: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350363408: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140675350361488: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999376464: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999376848: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999377232: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999377040: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999375696: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999378384: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999378768: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999379152: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999378960: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999375888: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999380304: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999380688: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999381072: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999380880: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999375120: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999382224: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999382608: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999382992: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999382800: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999378000: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999384144: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999384528: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999384912: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999384720: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999379920: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999386064: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999386448: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999386832: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999386640: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999381840: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999387984: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999388368: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999388752: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999388560: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999383760: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999389904: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999390288: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999391056: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999390480: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999385680: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999376080: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599147536: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599146960: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672999387600: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599147920: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599149072: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599149456: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599149840: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599149648: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599147152: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599150992: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599151376: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599151760: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599151568: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599146576: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599152912: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599153296: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599153680: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599153488: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599148688: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599154832: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599155216: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599155600: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599155408: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599150608: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599156752: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599157136: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599157520: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599157328: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599152528: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599158672: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599159056: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599159440: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599159248: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599154448: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599160592: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599160976: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599161360: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599161168: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599156368: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599162512: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599147728: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599179728: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599162128: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599160208: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599180880: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599181264: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599181648: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599181456: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599180112: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599182800: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599183184: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599183568: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599183376: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599180304: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599184720: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599185104: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599185488: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599185296: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599179536: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599186640: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599187024: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599187408: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599187216: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599182416: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599188560: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599188944: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599189328: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599189136: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599184336: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599190480: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599190864: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599191248: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599191056: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599186256: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599192400: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599192784: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599193168: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599192976: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599188176: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599194320: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599194704: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599195472: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599194896: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599190096: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599180496: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609349648: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609348688: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599192016: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609350032: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609351184: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609351568: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609351952: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609351760: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609349072: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609353104: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609353488: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609353872: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609353680: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609349264: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609355024: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609355408: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609355792: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609355600: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609350800: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609356944: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609357328: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609357712: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609357520: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609352720: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609358864: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609359248: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609359632: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609359440: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609354640: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609360784: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609361168: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609361552: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609361360: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609356560: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609362704: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609363088: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609363472: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609363280: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609358480: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609364624: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609349840: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608791632: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609364240: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674609362320: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608793168: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608793552: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608793936: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608793744: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608792400: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608795088: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608795472: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608795856: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608795664: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608792592: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608797008: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608797392: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608797776: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608797584: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608791824: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608798928: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608799312: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608799696: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608799504: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608794704: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608800848: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608801232: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608801616: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608801424: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608796624: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608802768: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608803152: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608803536: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608803344: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608798544: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608804688: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608805072: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608805456: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608805264: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608800464: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608806608: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608806992: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608807760: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608807184: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608802384: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608792784: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599426064: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599425488: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140674608804304: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599426448: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599427600: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599427984: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599428368: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599428176: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599425680: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599429520: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599429904: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599430288: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599430096: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599425104: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599426256: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599432400: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599431632: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  140672599433552: TensorSpec(shape=(), dtype=tf.resource, name=None)
+/home/brady/tf-gpu/lib/python3.12/site-packages/tensorflow/lite/python/convert.py:854: UserWarning: Statistics for quantized inputs were expected, but not specified; continuing anyway.
+  warnings.warn(
+W0000 00:00:1746438491.909944  770226 tf_tfl_flatbuffer_helpers.cc:365] Ignored output_format.
+W0000 00:00:1746438491.909971  770226 tf_tfl_flatbuffer_helpers.cc:368] Ignored drop_control_dependency.
+2025-05-05 04:48:11.910664: I tensorflow/cc/saved_model/reader.cc:83] Reading SavedModel from: /tmp/tmprl7i26fq
+2025-05-05 04:48:11.916253: I tensorflow/cc/saved_model/reader.cc:52] Reading meta graph with tags { serve }
+2025-05-05 04:48:11.916275: I tensorflow/cc/saved_model/reader.cc:147] Reading SavedModel debug info (if present) from: /tmp/tmprl7i26fq
+I0000 00:00:1746438492.090910  770226 mlir_graph_optimization_pass.cc:425] MLIR V1 optimization pass is not enabled
+2025-05-05 04:48:12.100708: I tensorflow/cc/saved_model/loader.cc:236] Restoring SavedModel bundle.
+2025-05-05 04:48:12.528086: I tensorflow/cc/saved_model/loader.cc:220] Running initialization op on SavedModel bundle at path: /tmp/tmprl7i26fq
+2025-05-05 04:48:12.616738: I tensorflow/cc/saved_model/loader.cc:471] SavedModel load for tags { serve }; Status: success: OK. Took 706087 microseconds.
+fully_quantize: 0, inference_type: 6, input_inference_type: INT8, output_inference_type: INT8
+TFLite model saved: ./export/RoadLiteMobileNetV2.tflite
+TFLite model size: 668.60 KB
+C header file created: ./export/model_data.h (668.60 KB)
+Model information saved: ./export/model_info.txt
+Training complete! The optimized TFLite model is ready for deployment on the SparkFun Thing Plus RP2040.
+
+Process finished with exit code 0

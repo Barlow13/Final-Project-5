@@ -5,9 +5,8 @@
  * machine learning models for road object detection:
  * - Core 0: I/O operations (camera, display, user interface)
  * - Core 1: TensorFlow Lite inference and image processing
- *
- * PERFORMANCE OPTIMIZED VERSION
  */
+
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include "pico/util/queue.h"
@@ -78,15 +77,15 @@ static uint8_t g_process_buffer[MODEL_WIDTH * MODEL_HEIGHT * 3] __attribute__((a
 // Results shared between cores
 static volatile InferenceResult g_inference_result __attribute__((aligned(8)));
 
-// Improved class thresholds based on evaluation
+// Optimized thresholds from first version based on evaluation
 const float g_improved_thresholds[7] = {
-    0.21052632, // bicycle
-    0.28421053, // car
-    0.28421053, // motorcycle
-    0.28421053, // bus
-    0.24736842, // truck
-    0.21052632, // traffic light
-    0.28421053  // stop sign
+    0.2105, // bicycle
+    0.3211, // car
+    0.2474, // motorcycle
+    0.2842, // bus
+    0.2474, // truck
+    0.2474, // traffic light
+    0.2474  // stop sign
 };
 
 // Global variables for hardware
@@ -98,7 +97,7 @@ bool setup_camera();
 bool setup_display();
 bool capture_image_to_buffer(uint8_t *buffer, size_t buffer_size, uint32_t *captured_size);
 void debug_print(const char *msg);
-void display_message(const char *line1, const char *line2);
+void display_message(const char *line1, const char *line2, const char *line3);
 
 // TensorFlow Lite globals for Core 1
 namespace {
@@ -112,19 +111,15 @@ namespace {
     alignas(16) uint8_t tensor_arena[kTensorArenaSize];
 }
 
-/**
- * Helper function for debug output
- */
+// Helper function for debug output
 void debug_print(const char *msg) {
 #if DEBUG
     printf("%s\n", msg);
 #endif
 }
 
-/**
- * Display a message on the OLED screen
- */
-void display_message(const char *line1, const char *line2 = nullptr) {
+// Display a message on the OLED screen with up to three rows of text
+void display_message(const char *line1, const char *line2 = nullptr, const char *line3 = nullptr) {
     // Select OLED on multiplexer
     int result = pca9546_select(I2C_PORT, MUX_PORT_OLED);
     if (result != PCA9546_SUCCESS) {
@@ -134,18 +129,26 @@ void display_message(const char *line1, const char *line2 = nullptr) {
     }
     
     ssd1306_clear();
-    ssd1306_draw_string(0, 0, line1, 1);
     
+    // Display first line
+    if (line1) {
+        ssd1306_draw_string(0, 0, line1, 1);
+    }
+    
+    // Display second line
     if (line2) {
         ssd1306_draw_string(0, 16, line2, 1);
+    }
+    
+    // Display third line
+    if (line3) {
+        ssd1306_draw_string(0, 32, line3, 1);
     }
     
     ssd1306_show();
 }
 
-/**
- * Initialize hardware components
- */
+// Initialize hardware components
 bool setup_hardware() {
     // Initialize stdio
     stdio_init_all();
@@ -197,9 +200,7 @@ bool setup_hardware() {
     return true;
 }
 
-/**
- * Initialize OLED display
- */
+// Initialize OLED display
 bool setup_display() {
     debug_print("Setting up OLED display...");
 
@@ -221,9 +222,7 @@ bool setup_display() {
     return true;
 }
 
-/**
- * Verify correct SPI communication with ArduCAM controller
- */
+// Verify correct SPI communication with ArduCAM controller
 bool verify_arducam_spi() {
     printf("Verifying ArduCAM SPI communication...\n");
 
@@ -242,9 +241,7 @@ bool verify_arducam_spi() {
     return true;
 }
 
-/**
- * Verify camera sensor is responding
- */
+// Verify camera sensor is responding
 bool verify_camera_sensor() {
     // Select ArduCAM channel on multiplexer
     int result = pca9546_select(I2C_PORT, MUX_PORT_ARDUCAM);
@@ -279,9 +276,7 @@ bool verify_camera_sensor() {
     return true;
 }
 
-/**
- * Test camera capture to verify functionality
- */
+// Test camera capture to verify functionality
 bool test_camera_capture() {
     printf("Testing camera capture...\n");
 
@@ -365,9 +360,7 @@ bool test_camera_capture() {
     return true;
 }
 
-/**
- * Initialize ArduCAM camera
- */
+// Initialize ArduCAM camera
 bool setup_camera() {
     debug_print("Setting up ArduCAM...");
 
@@ -440,10 +433,8 @@ bool setup_camera() {
     return true;
 }
 
-/**
- * Capture image from camera and store in buffer
- * Optimized to reduce processing time
- */
+// Capture image from camera and store in buffer
+// Optimized to reduce processing time
 bool capture_image_to_buffer(uint8_t *buffer, size_t buffer_size, uint32_t *captured_size) {
     // Select ArduCAM on multiplexer
     int result = pca9546_select(I2C_PORT, MUX_PORT_ARDUCAM);
@@ -532,9 +523,7 @@ bool capture_image_to_buffer(uint8_t *buffer, size_t buffer_size, uint32_t *capt
     return true;
 }
 
-/**
- * Process image for inference - runs on Core 1
- */
+// Process image for inference - runs on Core 1
 bool process_image_for_inference(const uint8_t *raw_buffer, uint32_t raw_size, uint8_t *output_buffer) {
     // Decode JPEG to RGB at reduced resolution directly
     if (!jpeg_decode_to_model_input(raw_buffer, raw_size,
@@ -547,9 +536,7 @@ bool process_image_for_inference(const uint8_t *raw_buffer, uint32_t raw_size, u
     return true;
 }
 
-/**
- * Fill TFLite input tensor with preprocessed image data
- */
+// Fill TFLite input tensor with preprocessed image data
 bool fill_input_tensor(const uint8_t *image_data) {
     if (!input) {
         printf("Error: Input tensor not initialized\n");
@@ -639,16 +626,15 @@ bool fill_input_tensor(const uint8_t *image_data) {
     return true;
 }
 
-/**
- * Format and display detection results
- */
+// Format and display detection results using three lines
+// Enhanced to improve serial monitor and OLED display
 void display_results(const InferenceResult *result) {
     if (!result || !result->valid) {
-        display_message("DETECTION ERROR", "Invalid result");
+        display_message("DETECTION ERROR", "Invalid result", "");
         return;
     }
     
-    // Keep track of highest confidence class for second line
+    // Keep track of highest confidence class for display
     int best_idx = 0;
     float best_score = result->scores[0];
     
@@ -663,45 +649,76 @@ void display_results(const InferenceResult *result) {
     // Convert highest confidence to percentage
     int confidence_pct = (int)(best_score * 100);
     
-    // Build a string with all detected classes
+    // Print individual class predictions to serial monitor
+    printf("--------DETECTION RESULTS--------\n");
+    for (int i = 0; i < 7; i++) {
+        printf("Class: %-13s | Score: %5.2f%% | %s\n", 
+               class_names[i], 
+               result->scores[i] * 100.0f,
+               result->predictions[i] ? "DETECTED" : "Not detected");
+    }
+    printf("Best detection: %s (%d%%)\n", class_names[best_idx], confidence_pct);
+    printf("Inference time: %ld ms\n", result->inference_time_ms);
+    printf("-------------------------------\n");
+    
+    // Build a string with detected classes (for line 1)
     char detected_classes[32] = ""; // Buffer for detected classes
     int detected_count = 0;
     
     for (int i = 0; i < 7; i++) {
         if (result->predictions[i]) {
             // If not the first detection, add comma separator
-            if (detected_count > 0) {
+            if (detected_count > 0 && strlen(detected_classes) < 28) {
                 strcat(detected_classes, ",");
             }
             
-            // Add class name
-            strcat(detected_classes, class_names[i]);
-            detected_count++;
+            // Add class name if there's enough space
+            if (strlen(detected_classes) + strlen(class_names[i]) < 29) {
+                strcat(detected_classes, class_names[i]);
+                detected_count++;
+            }
         }
     }
     
     // If nothing detected, show "NONE"
     if (detected_count == 0) {
-        strcpy(detected_classes, "NONE");
+        strcpy(detected_classes, "NONE DETECTED");
     }
     
-    // Prepare second line (e.g. "87% 45ms")
-    char info[17];
-    snprintf(info, sizeof(info), "%d%% %ldms", confidence_pct, result->inference_time_ms);
+    // Prepare second line - best detection with confidence
+    char best_detection[17];
+    if (detected_count > 0) {
+        snprintf(best_detection, sizeof(best_detection), "%s: %d%%", 
+                class_names[best_idx], confidence_pct);
+    } else {
+        snprintf(best_detection, sizeof(best_detection), "CONFIDENCE: %d%%", 
+                confidence_pct);
+    }
     
-    // Render to screen
-    display_message(detected_classes, info);
+    // Prepare third line with timing info
+    char timing_info[17];
+    snprintf(timing_info, sizeof(timing_info), "INF: %ldms", result->inference_time_ms);
     
-    // Print detections to console for debugging
-    printf("Detections: %s (best: %s at %d%%)\n", 
-           detected_classes, 
-           detected_count > 0 ? class_names[best_idx] : "none", 
-           confidence_pct);
+    // Select OLED on multiplexer before displaying
+    pca9546_select(I2C_PORT, MUX_PORT_OLED);
+       
+    // Display results on OLED
+    ssd1306_clear();
+    
+    // Display first line (detected classes)
+    ssd1306_draw_string(0, 0, detected_classes, 1);
+    
+    // Display second line (best detection with confidence)
+    ssd1306_draw_string(0, 12, best_detection, 1);
+    
+    // Display third line (timing info)
+    ssd1306_draw_string(0, 24, timing_info, 1);
+    
+    // Update display
+    ssd1306_show();
 }
 
-/**
- * Core 1 entry function - handles all ML inference
- */
+// Core 1 entry function - handles all ML inference
 void core1_entry() {
     printf("Core 1: Starting TensorFlow Lite initialization...\n");
     
@@ -869,9 +886,7 @@ void core1_entry() {
     }
 }
 
-/**
- * Main function - runs on Core 0
- */
+// Main function - runs on Core 0
 int main() {
     // Set inference result as invalid initially
     g_inference_result.valid = false;
@@ -896,7 +911,7 @@ int main() {
     }
 
     // Display status
-    display_message("LOADING MODEL", "Please wait...");
+    display_message("LOADING MODEL", "Please wait...", nullptr);
     
     // Launch Core 1 for ML processing
     multicore_launch_core1(core1_entry);
@@ -915,7 +930,7 @@ int main() {
             }
             else if (response == CMD_ERROR) {
                 printf("Core 0: Error during TensorFlow initialization\n");
-                display_message("MODEL ERROR", "Restart device");
+                display_message("MODEL ERROR", "Restart device", nullptr);
                 while (true)
                     sleep_ms(1000); // Halt
             }
@@ -924,7 +939,7 @@ int main() {
         // Check for timeout
         if (absolute_time_diff_us(get_absolute_time(), timeout) <= 0) {
             printf("Core 0: Timeout waiting for TensorFlow initialization\n");
-            display_message("INIT TIMEOUT", "Restart device");
+            display_message("INIT TIMEOUT", "Restart device", nullptr);
             while (true)
                 sleep_ms(1000); // Halt
         }
@@ -933,13 +948,20 @@ int main() {
     }
 
     // Show ready message
-    display_message("SYSTEM READY", "Starting...");
+    display_message("SYSTEM READY", "Starting...", nullptr);
     sleep_ms(1000);
 
+    // Initialize with a first result message
+    display_message("AWAITING FIRST", "DETECTION", nullptr);
+    
+    // Flag to track if we need to update display
+    bool display_needs_update = false;
+    
     // Main processing loop
     while (true) {
-        // Update display
-        display_message("CAPTURING...");
+        // Don't update display to "CAPTURING..." - keep previous results visible
+        // Instead just log to console
+        printf("Core 0: Capturing new image...\n");
         
         // Capture image
         uint32_t capture_size = 0;
@@ -948,7 +970,8 @@ int main() {
             
         if (!capture_success) {
             printf("Core 0: Image capture failed\n");
-            display_message("CAPTURE ERROR", "Retrying...");
+            // Only update display in case of error
+            display_message("CAPTURE ERROR", "Retrying...", nullptr);
             sleep_ms(1000);
             continue;
         }
@@ -958,8 +981,9 @@ int main() {
         g_capture_size = capture_size;
         spin_unlock(memory_lock, save);
         
-        // Update display
-        display_message("PROCESSING...");
+        // Don't update display to "PROCESSING..." - keep previous results visible
+        // Instead just log to console
+        printf("Core 0: Processing image...\n");
         
         // Signal Core 1 to process the image
         uint32_t process_cmd = CMD_PROCESS_IMAGE;
@@ -976,6 +1000,7 @@ int main() {
             if (queue_try_remove(&core1_to_core0_queue, &response)) {
                 if (response == CMD_INFERENCE_COMPLETE) {
                     processing_complete = true;
+                    display_needs_update = true;  // Mark that we need to update display
                 }
                 else if (response == CMD_ERROR) {
                     processing_error = true;
@@ -985,7 +1010,7 @@ int main() {
             // Check for timeout
             if (absolute_time_diff_us(get_absolute_time(), timeout) <= 0) {
                 printf("Core 0: Timeout waiting for inference\n");
-                display_message("INFERENCE TIMEOUT", "Retrying...");
+                display_message("INFERENCE TIMEOUT", "Retrying...", nullptr);
                 processing_error = true;
             }
             
@@ -997,17 +1022,22 @@ int main() {
             continue;
         }
         
-        // Display results
-        save = spin_lock_blocking(memory_lock);
-        InferenceResult local_result;
-        memcpy(&local_result, (void*)&g_inference_result, sizeof(InferenceResult));
-        spin_unlock(memory_lock, save);
+        // Only update the display when we have new results
+        if (display_needs_update) {
+            // Display results
+            save = spin_lock_blocking(memory_lock);
+            InferenceResult local_result;
+            memcpy(&local_result, (void*)&g_inference_result, sizeof(InferenceResult));
+            spin_unlock(memory_lock, save);
+            
+            display_results(&local_result);
+            display_needs_update = false;  // Reset flag
+        }
         
-        display_results(&local_result);
-        
-        // Delay before next capture
-        sleep_ms(2000);
+        // Small delay before next capture to avoid CPU hogging
+        // but not too long to keep detection responsive
+        sleep_ms(100);
     }
 
     return 0;
-}
+}   

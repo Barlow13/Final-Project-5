@@ -1,13 +1,6 @@
 """
-Enhanced Road Object Detection Testing Script
+Road Object Detection Testing Script
 For TFLite model evaluation on RP2040 deployment
-
-This improved script provides:
-1. Comprehensive model evaluation metrics
-2. Per-class performance visualization
-3. Confusion matrix analysis
-4. Better test image selection and visualization
-5. Edge case detection
 """
 
 import os
@@ -52,7 +45,7 @@ output_details = interpreter.get_output_details()
 input_shape = input_details[0]['shape']
 input_dtype = input_details[0]['dtype']
 
-print(f"✅ TFLite model loaded and ready for inference")
+print(f"TFLite model loaded and ready for inference")
 print(f"Input shape: {input_shape}")
 print(f"Input dtype: {input_dtype}")
 print(f"Detecting {NUM_CLASSES} classes: {', '.join(CLASS_NAMES)}")
@@ -61,10 +54,10 @@ print(f"Detecting {NUM_CLASSES} classes: {', '.join(CLASS_NAMES)}")
 thresholds_path = os.path.join(EXPORT_DIR, "best_thresholds.npy")
 if os.path.exists(thresholds_path):
     thresholds = np.load(thresholds_path)
-    print(f"✅ Loaded optimized thresholds from {thresholds_path}: {thresholds}")
+    print(f"Loaded optimized thresholds from {thresholds_path}: {thresholds}")
 else:
     thresholds = np.array([0.5] * NUM_CLASSES)
-    print("⚠️ Using default thresholds of 0.5")
+    print("Using default thresholds of 0.5")
 
 
 # ─── PREPROCESS FUNCTION ─────────────────────────────────────────────────────
@@ -136,9 +129,9 @@ def evaluate_test_dataset():
 
     try:
         df_test = pd.read_excel(EXCEL_TEST_PATH)
-        print(f"✅ Loaded test dataset with {len(df_test)} samples")
+        print(f"Loaded test dataset with {len(df_test)} samples")
     except Exception as e:
-        print(f"⚠️ Error loading test dataset: {e}")
+        print(f"Error loading test dataset: {e}")
         return None, None, None, None
 
     # Prepare for evaluation
@@ -151,7 +144,7 @@ def evaluate_test_dataset():
     max_eval_samples = 500
     if len(df_test) > max_eval_samples:
         df_test = df_test.sample(max_eval_samples, random_state = 42)
-        print(f"⚠️ Using {max_eval_samples} random samples for evaluation")
+        print(f"Using {max_eval_samples} random samples for evaluation")
 
     # Process each test sample
     for idx, row in df_test.iterrows():
@@ -562,10 +555,7 @@ def analyze_model_size():
 
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 def main():
-    """Run the complete test suite"""
-    print("🚀 Starting comprehensive model evaluation")
-
-    # Test on random images
+      # Test on random images
     print("\n1. Testing on random images...")
     test_random_images(num_samples = 8)
 
@@ -592,7 +582,7 @@ def main():
     print("\n7. Analyzing model size...")
     analyze_model_size()
 
-    print(f"\n✅ Evaluation complete. All results saved to {PREDICTION_DIR}/")
+    print(f"\nEvaluation complete. All results saved to {PREDICTION_DIR}/")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,29 @@
+Model Name: RoadLiteMobileNetV2
+Input Shape: 64x64x3
+Classes: bicycle, car, motorcycle, bus, truck, traffic light, stop sign
+Model Size: 668.60 KB
+
+=== Class Detection Thresholds ===
+bicycle: 0.2105
+car: 0.3211
+motorcycle: 0.2474
+bus: 0.2842
+truck: 0.2474
+traffic light: 0.2474
+stop sign: 0.2474
+
+=== Training Configuration ===
+Training Dataset: 11321 samples
+Test Dataset: 1760 samples
+Batch Size: 32
+Initial Learning Rate: 0.001
+Frozen Epochs: 16
+Fine-tune Epochs: 256
+
+=== Thresholds C Array ===
+const float thresholds[NUM_CLASSES] = {0.2105f, 0.3211f, 0.2474f, 0.2842f, 0.2474f, 0.2474f, 0.2474f};
+
+=== Final Test Set Performance ===
+F1 Score: 0.3658
+Precision: 0.3151
+Recall: 0.5501

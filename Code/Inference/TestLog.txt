@@ -1,0 +1,94 @@
+/home/brady/tf-gpu/bin/python /mnt/c/Users/brady/OneDrive/Desktop/FInal-Project-5/Final-Project-5/Code/Inference/Test.py 
+2025-05-05 09:30:00.940647: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-05-05 09:30:00.948313: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746455400.957341 1130558 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746455400.960323 1130558 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1746455400.967560 1130558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746455400.967589 1130558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746455400.967591 1130558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746455400.967591 1130558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-05-05 09:30:00.969871: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/home/brady/tf-gpu/lib/python3.12/site-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in
+    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.
+    See the [migration guide](https://ai.google.dev/edge/litert/migration)
+    for details.
+    
+  warnings.warn(_INTERPRETER_DELETION_WARNING)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+TFLite model loaded and ready for inference
+Input shape: [ 1 64 64  3]
+Input dtype: <class 'numpy.int8'>
+Detecting 7 classes: bicycle, car, motorcycle, bus, truck, traffic light, stop sign
+Loaded optimized thresholds from ../TensorFlow/export/best_thresholds.npy: [0.21052632 0.32105263 0.24736842 0.28421053 0.24736842 0.24736842
+ 0.24736842]
+
+1. Testing on random images...
+
+2. Evaluating on test dataset...
+Loaded test dataset with 1760 samples
+Using 500 random samples for evaluation
+Processed 1600/500 test samples
+Processed 600/500 test samples
+Processed 1750/500 test samples
+Processed 1450/500 test samples
+Processed 50/500 test samples
+Processed 950/500 test samples
+Processed 100/500 test samples
+Processed 1250/500 test samples
+Processed 800/500 test samples
+Processed 200/500 test samples
+
+3. Calculating metrics...
+
+===== Classification Report =====
+               precision    recall  f1-score   support
+
+      bicycle       0.13      0.82      0.23        50
+          car       0.47      0.81      0.59       148
+   motorcycle       0.33      0.36      0.34        56
+          bus       0.41      0.32      0.36        66
+        truck       0.23      0.75      0.35        77
+traffic light       0.24      0.60      0.34        55
+    stop sign       0.36      0.28      0.31        18
+
+    micro avg       0.28      0.63      0.38       470
+    macro avg       0.31      0.56      0.36       470
+ weighted avg       0.34      0.63      0.41       470
+  samples avg       0.16      0.35      0.21       470
+
+
+4. Visualizing performance metrics...
+/mnt/c/Users/brady/OneDrive/Desktop/FInal-Project-5/Final-Project-5/Code/Inference/Test.py:235: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.barplot(x = 'class', y = 'f1-score', data = metrics_df, palette = 'viridis')
+
+5. Analyzing errors...
+
+===== Error Analysis =====
+False Negatives: 172
+False Positives: 784
+Low Confidence: 497
+Multiple Detections: 0
+
+6. Testing inference speed...
+
+===== Inference Speed Test =====
+Average inference time: 0.10 ms (10063.74 FPS)
+Standard deviation: 0.04 ms
+Min/Max time: 0.09/0.32 ms
+
+7. Analyzing model size...
+
+===== Model Size Analysis =====
+Model file: ../TensorFlow/export/RoadLiteMobileNetV2.tflite
+Model size: 668.60 KB (0.65 MB)
+Percentage of typical RP2040 flash (2MB): 0.33%
+Percentage of typical RP2040 RAM (264KB): 2.53%
+
+Evaluation complete. All results saved to ./predictions/
+
+Process finished with exit code 0

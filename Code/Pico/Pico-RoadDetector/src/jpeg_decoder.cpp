@@ -2,7 +2,6 @@
  * JPEG Decoder Implementation
  * 
  * A lightweight wrapper for the picojpeg library to decode JPEG images
- * on the Raspberry Pi Pico for the road detection project.
  */
  #include "jpeg_decoder.h"
  #include "picojpeg.h"

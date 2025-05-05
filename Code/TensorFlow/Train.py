@@ -674,4 +674,57 @@ with open(os.path.join(EXPORT_DIR, "class_names.txt"), 'w') as f:
     for i, name in class_names.items():
         f.write(f"{i}: {name}\n")
 
+# ─── GENERATE HEADER FILE FOR RP2040 ─────────────────────────────────────────────
+with open(tflite_path, 'rb') as f:
+    data = f.read()
+
+header_path = os.path.join(EXPORT_DIR, "model_data.h")
+with open(header_path, 'w') as f:
+    f.write('const unsigned char model_data[] = {\n')
+    for i, b in enumerate(data):
+        if i % 12 == 0:
+            f.write('\n ')
+        f.write(f' 0x{b:02x},')
+    f.write('\n};\nconst int model_data_len = sizeof(model_data);\n')
+print(f"C header file created: {header_path} ({len(data) / 1024:.2f} KB)")
+
+# ─── SAVE ADDITIONAL METADATA FILES ───────────────────────────────────────────
+# Save model information summary with thresholds included directly in the text file
+model_info_path = os.path.join(EXPORT_DIR, "model_info.txt")
+with open(model_info_path, 'w') as f:
+    f.write(f"Model Name: {NICKNAME}\n")
+    f.write(f"Input Shape: {IMG_HEIGHT}x{IMG_WIDTH}x3\n")
+    f.write(f"Classes: {', '.join(ROAD_CLASSES)}\n")
+    f.write(f"Model Size: {len(tflite_model) / 1024:.2f} KB\n")
+
+    # Add detailed threshold information
+    f.write("\n=== Class Detection Thresholds ===\n")
+    for i, class_name in enumerate(ROAD_CLASSES):
+        f.write(f"{class_name}: {float(metrics_callback_stage2.thresholds[i]):.4f}\n")
+
+    f.write("\n=== Training Configuration ===\n")
+    f.write(f"Training Dataset: {len(df_train)} samples\n")
+    # Note: df_val isn't defined in the script, using test dataset instead
+    f.write(f"Test Dataset: {len(df_test)} samples\n")
+    f.write(f"Batch Size: {BATCH_SIZE}\n")
+    f.write(f"Initial Learning Rate: {INITIAL_LR}\n")
+    f.write(f"Frozen Epochs: {FROZEN_EPOCHS}\n")
+    f.write(f"Fine-tune Epochs: {FINE_TUNE_EPOCHS}\n")
+
+    f.write("\n=== Thresholds C Array ===\n")
+    f.write(f"const float thresholds[NUM_CLASSES] = {{")
+    f.write(", ".join([f"{float(metrics_callback_stage2.thresholds[i]):.4f}f" for i in range(len(ROAD_CLASSES))]))
+    f.write("};\n")
+
+    # Get the final metrics from the metrics_callback
+    final_f1 = metrics_callback_stage2.metrics_history['f1'][-1] if metrics_callback_stage2.metrics_history['f1'] else 0
+    final_precision = metrics_callback_stage2.metrics_history['precision'][-1] if metrics_callback_stage2.metrics_history['precision'] else 0
+    final_recall = metrics_callback_stage2.metrics_history['recall'][-1] if metrics_callback_stage2.metrics_history['recall'] else 0
+
+    f.write("\n=== Final Test Set Performance ===\n")
+    f.write(f"F1 Score: {final_f1:.4f}\n")
+    f.write(f"Precision: {final_precision:.4f}\n")
+    f.write(f"Recall: {final_recall:.4f}\n")
+
+print(f"Model information saved: {model_info_path}")
 print("Training complete! The optimized TFLite model is ready for deployment on the SparkFun Thing Plus RP2040.")

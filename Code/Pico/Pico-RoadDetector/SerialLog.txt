@@ -1,0 +1,116 @@
+---- Reopened serial port COM13 ----
+Initializing hardware...
+I2C and SPI initialized
+PCA9546: Successfully initialized at address 0x70
+PCA9546 multiplexer initialized
+Hardware initialized
+Setting up OLED display...
+OLED display ready
+Setting up ArduCAM...
+Verifying ArduCAM SPI communication...
+Write 0x55, read: 0x55
+ArduCAM SPI communication verified
+Camera ID check - VID: 0x56, PID: 0x42
+OV5642 camera sensor verified
+Testing camera capture...
+Test capture started
+Test capture completed in 170 ms
+Test image size: 1608 bytes
+JPEG header: FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 00 
+Valid JPEG data captured - Camera test PASSED
+ArduCAM camera initialized successfully
+Core 0: Waiting for TensorFlow Lite initialization...
+Core 1: Starting TensorFlow Lite initialization...
+Core 1: TensorFlow Lite initialized successfully
+Core 1: Input tensor type: 9, dims: 1 x 64 x 64 x 3
+Core 1: Output tensor type: 9, dims: 1 x 7
+Core 0: Capturing new image...
+Starting image capture...
+Capture completed successfully in 161 ms
+FIFO length: 1640 bytes
+First 16 bytes: FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 00 
+Core 0: Processing image...
+Core 1: Inference took 690 ms
+--------DETECTION RESULTS--------
+Class: BI            | Score: 17.97% | Not detected
+Class: C             | Score: 25.39% | Not detected
+Class: M             | Score: 13.67% | Not detected
+Class: B             | Score: 12.11% | Not detected
+Class: T             | Score: 20.70% | Not detected
+Class: TL            | Score: 15.62% | Not detected
+Class: SS            | Score: 19.92% | Not detected
+Best detection: C (25%)
+Inference time: 690 ms
+-------------------------------
+Core 0: Capturing new image...
+Starting image capture...
+Capture completed successfully in 236 ms
+FIFO length: 1624 bytes
+First 16 bytes: FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 00 
+Core 0: Processing image...
+Core 1: Inference took 690 ms
+--------DETECTION RESULTS--------
+Class: BI            | Score: 17.97% | Not detected
+Class: C             | Score: 25.39% | Not detected
+Class: M             | Score: 14.06% | Not detected
+Class: B             | Score: 12.11% | Not detected
+Class: T             | Score: 20.70% | Not detected
+Class: TL            | Score: 15.62% | Not detected
+Class: SS            | Score: 19.53% | Not detected
+Best detection: C (25%)
+Inference time: 690 ms
+-------------------------------
+Core 0: Capturing new image...
+Starting image capture...
+Capture completed successfully in 236 ms
+FIFO length: 1640 bytes
+First 16 bytes: FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 00 
+Core 0: Processing image...
+Core 1: Inference took 690 ms
+--------DETECTION RESULTS--------
+Class: BI            | Score: 17.97% | Not detected
+Class: C             | Score: 25.00% | Not detected
+Class: M             | Score: 13.67% | Not detected
+Class: B             | Score: 12.11% | Not detected
+Class: T             | Score: 20.70% | Not detected
+Class: TL            | Score: 15.62% | Not detected
+Class: SS            | Score: 19.92% | Not detected
+Best detection: C (25%)
+Inference time: 690 ms
+-------------------------------
+Core 0: Capturing new image...
+Starting image capture...
+Capture completed successfully in 236 ms
+FIFO length: 1640 bytes
+First 16 bytes: FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 00 
+Core 0: Processing image...
+Core 1: Inference took 690 ms
+--------DETECTION RESULTS--------
+Class: BI            | Score: 17.97% | Not detected
+Class: C             | Score: 25.39% | Not detected
+Class: M             | Score: 13.67% | Not detected
+Class: B             | Score: 12.11% | Not detected
+Class: T             | Score: 20.70% | Not detected
+Class: TL            | Score: 15.62% | Not detected
+Class: SS            | Score: 19.92% | Not detected
+Best detection: C (25%)
+Inference time: 690 ms
+-------------------------------
+Core 0: Capturing new image...
+Starting image capture...
+Capture completed successfully in 236 ms
+FIFO length: 1624 bytes
+First 16 bytes: FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 00 
+Core 0: Processing image...
+Core 1: Inference took 690 ms
+--------DETECTION RESULTS--------
+Class: BI            | Score: 17.19% | Not detected
+Class: C             | Score: 24.22% | Not detected
+Class: M             | Score: 12.89% | Not detected
+Class: B             | Score: 10.94% | Not detected
+Class: T             | Score: 19.92% | Not detected
+Class: TL            | Score: 14.45% | Not detected
+Class: SS            | Score: 18.75% | Not detected
+Best detection: C (24%)
+Inference time: 690 ms
+-------------------------------
